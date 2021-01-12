@@ -1,21 +1,21 @@
 <script>
   export let choices;
-  export let index;
 
   let value;
+
+  const slugify = (str) => str.toLowerCase().replace(/\W/g, "");
 </script>
 
 {#if choices}
   <div class="decision">
     <fieldset>
-      {#each choices as { hed, text }, i}
+      {#each choices as { hed, text }}
         <input
-          id="decision-{index}--{i}"
+          id="{slugify(hed)}"
           type="radio"
           value="{hed}"
-          name="decision-{index}"
           bind:group="{value}" />
-        <label for="decision-{index}--{i}">{hed}</label>
+        <label for="{slugify(hed)}">{hed}</label>
       {/each}
     </fieldset>
   </div>
