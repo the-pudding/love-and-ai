@@ -19,7 +19,8 @@
 
 <!-- <Header /> -->
 
-<Path />
+<Path name="block" />
+<Path name="left" />
 
 {#each copy.story as section, i}
   <section id="section-{i}">

@@ -7,14 +7,15 @@
 </script>
 
 {#if choices}
-  <div class="decision">
+  <div class="decision block">
     <fieldset>
       {#each choices as { hed, text }}
         <input
           id="{slugify(hed)}"
           type="radio"
           value="{hed}"
-          bind:group="{value}" />
+          bind:group="{value}"
+        />
         <label for="{slugify(hed)}">{hed}</label>
       {/each}
     </fieldset>

@@ -3,6 +3,8 @@
   import { onMount } from "svelte";
   import { innerWidth, innerHeight, scrollY } from "../stores/global.js";
 
+  export let name;
+
   let documentH = 0;
   let mounted;
   let points = [];
@@ -18,7 +20,8 @@
 
   const update = () => {
     documentH = document.body.scrollHeight;
-    const blocks = [].concat(...document.querySelectorAll(".block"));
+
+    const blocks = [].concat(...document.querySelectorAll(`.${name}`));
     const couples = blocks.map((node) => {
       const { top, left, width, height } = node.getBoundingClientRect();
       const y0 = $scrollY + top;
@@ -36,12 +39,9 @@
 
   onMount(() => {
     mounted = true;
-    // setTimeout(() => {
-    //   console.log(pathEl.getTotalLength());
-    // }, 1000);
   });
 
-  $: mounted && ($innerWidth || $innerHeight || $scrollY), update();
+  $: mounted && ($innerWidth || $innerHeight), update();
   $: if (pathEl && pathD) dashArray = pathEl.getTotalLength();
 </script>
 
@@ -79,5 +79,6 @@
     left: 0;
     width: 100%;
     z-index: var(--z-bottom);
+    background: rgba(255, 0, 0, 0.1);
   }
 </style>
