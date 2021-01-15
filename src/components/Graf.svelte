@@ -9,11 +9,12 @@
 </script>
 
 <p
-  class="{alignment}"
+  class="block {alignment}"
   class:visible
   use:inView="{{ bottom }}"
   on:enter="{() => (visible = true)}"
-  on:exit="{() => (visible = false)}">
+  on:exit="{() => (visible = false)}"
+>
   {@html text}
 </p>
 
@@ -22,6 +23,7 @@
     width: 25em;
     opacity: 0.25;
     transition: opacity 0.25s;
+    padding: 1em;
   }
 
   p.visible {
