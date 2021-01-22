@@ -17,7 +17,8 @@ export default function inView(node, params = {}) {
 
 	const handleIntersect = (e) => {
 		const v = e[0].isIntersecting ? "enter" : "exit";
-		node.dispatchEvent(new CustomEvent(v));
+		const ratio = e[0].intersectionRatio;
+		node.dispatchEvent(new CustomEvent(v, { detail: { ratio }}));
 	};
 	
 	const setObserver = ({ root, top, bottom }) => {
