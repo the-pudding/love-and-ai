@@ -16,6 +16,8 @@
     "d3-shape": "^2.0.0",
     "feather-icons": "^4.28.0",
     "layercake": "^4.0.3",
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "postcss": "^8.2.1",
     "request": "^2.88.2",
     "rollup": "^2.35.1",
@@ -28,7 +30,8 @@
     "shelljs": "^0.8.4",
     "sirv-cli": "^1.0.10",
     "svelte": "^3.31.0",
-    "svelte-preprocess": "^4.6.1"
+    "svelte-preprocess": "^4.6.1",
+    "svelte-reactive-preprocessor": "^0.6.1"
   },
   "scripts": {
     "build": "rollup -c",

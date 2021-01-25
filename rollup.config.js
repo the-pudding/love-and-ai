@@ -8,6 +8,8 @@ import dsv from "@rollup/plugin-dsv";
 import hmr from "rollup-plugin-hot";
 import execute from "rollup-plugin-execute";
 import { terser } from "rollup-plugin-terser";
+import { reactivePreprocess } from "svelte-reactive-preprocessor";
+
 
 const isWatch = !!process.env.ROLLUP_WATCH;
 const isLiveReload = !!process.env.LIVERELOAD;
@@ -15,11 +17,11 @@ const isDev = isWatch || isLiveReload;
 const isProduction = !isDev;
 const isHot = isWatch && !isLiveReload;
 
-const preprocess = sveltePreprocess({
+const preprocess = [sveltePreprocess({
   postcss: {
     plugins: [require("autoprefixer")]
   }
-});
+}), reactivePreprocess()];
 
 
 function serve() {

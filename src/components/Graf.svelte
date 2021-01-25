@@ -1,17 +1,19 @@
 <script>
   import inView from "../actions/inView.js";
-  import { innerHeight } from "../stores/global.js";
+  import { innerHeight, bottomOffset } from "../stores/global.js";
   export let text;
-  export let alignment;
+  export let align;
+  export let id;
+  export let connect;
   let visible;
 
-  $: bottom = Math.round($innerHeight * 0.25);
+  // $: $progress[index] = visible;
 </script>
 
 <p
-  class="block {alignment}"
+  class="block {align}"
   class:visible
-  use:inView="{{ bottom }}"
+  use:inView="{{ bottom: $bottomOffset }}"
   on:enter="{() => (visible = true)}"
   on:exit="{() => (visible = false)}"
 >
