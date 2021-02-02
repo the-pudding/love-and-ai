@@ -2,16 +2,18 @@
   export let data;
   export let active;
   $: current = data[active];
-  $: r = current.rotate * -1;
+  $: r = current.rotate;
 </script>
 
-<div class="decision-input block" style="transform: rotate({r}deg);">
+<div class="decision-input block" style="transform: rotate({-r}deg);">
   <fieldset>
     {#each data as { slug, title, rotate }, i}
       <div class="choice">
         <div class="rotate" style="transform: rotate({rotate}deg);">
           <input id="{slug}" type="radio" value="{i}" bind:group="{active}" />
-          <label for="{slug}">{title}</label>
+          <label for="{slug}" style="transform: rotate({-rotate + r}deg);"
+            >{title}</label
+          >
         </div>
       </div>
     {/each}
@@ -23,7 +25,7 @@
     width: var(--col-width);
     height: var(--col-width);
     margin: 0 auto;
-    transition: transform 500ms ease-out;
+    transition: transform 500ms ease-in-out;
     transform-origin: 50% 50%;
   }
 
@@ -55,6 +57,7 @@
     cursor: pointer;
     width: 15em;
     margin: 0 auto;
+    transition: transform 500ms ease-out;
   }
 
   input {

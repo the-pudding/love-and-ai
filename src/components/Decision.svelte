@@ -7,7 +7,7 @@
   const middle = Math.floor(choices.length / 2);
   const scale = scaleDiverging()
     .domain([0, middle, choices.length - 1])
-    .range([90, 0, -90]);
+    .range([45, 0, -45]);
 
   const data = choices.map((d, i) => ({
     ...d,
