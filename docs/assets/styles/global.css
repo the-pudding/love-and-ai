@@ -29,9 +29,9 @@
 
 	/* water.css */
 
-	--body-font: var(--sans);
+	--body-font: var(--serif);
 	--background-body: var(--white);
-  --background: var(--off-white);
+  --background-ui: var(--off-white);
   --background-alt: var(--off-white);
   --selection: var(--gray);
   --text-main: var(--off-black);
@@ -40,13 +40,15 @@
   --border: var(--gray-light);
   --animation-duration: 0.1s;
   --button-hover: var(--gray-light);
-  --scrollbar-thumb: color-mod(var(--button-hover) lightness(-3%));
-  --scrollbar-thumb-hover: color-mod(var(--button-hover) lightness(-10%));
+  --scrollbar-thumb: var(--gray-light);
+  --scrollbar-thumb-hover: var(--gray-dark);
 	--form-placeholder: var(--gray-dark);
 	--form-font: var(--sans);
 	--form-text: var(--gray-dark);
 	--input-thumb: var(--gray-dark);
-  --highlight: var(--yellow);
+	--highlight: var(--yellow);
+
+	--col-width: 28em;
 }
 
 .skip-to-main {
@@ -69,8 +71,23 @@
 	fill: currentColor;
 }
 
-/* demo */
-#demo svg {
-	width: 1em;
-	vertical-align: middle;
+main {
+	overflow: hidden;
+}
+
+body {
+	font-size: 18px;
+}
+
+p {
+	line-height: 1.65;
+}
+
+.prose span {
+	background: pink;
+	display: none;
+}
+
+.prose span.active {
+	display: inline;
 }
