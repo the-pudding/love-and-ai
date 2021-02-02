@@ -8,6 +8,7 @@
 
   let documentH = 0;
   let mounted;
+  let paths = [];
   let points = [];
   let pathD = "";
   let pathEl;
@@ -15,7 +16,6 @@
   let end = 0;
   let blocks;
   let observed;
-  let scrollMap = [];
   let cx = 0;
   let cy = 0;
 
@@ -25,13 +25,8 @@
   //   .curve(curveCatmullRom.alpha(1));
 
   const progress = () => {
-    const visible = blocks.filter((node) => node.className.includes("visible"));
-    const tops = visible.map((node) => {
-      const { top } = node.getBoundingClientRect();
-      return top;
-    });
-    const max = Math.round(Math.max(...tops));
-    end = $scrollY + max;
+    const visible = blocks.map((node) => node.className.includes("visible"));
+    end = visible.lastIndexOf(true);
   };
 
   const onMutation = (mutations, observer) => {
@@ -41,7 +36,7 @@
     if (classChange) progress();
   };
 
-  const update = () => {
+  const renderPath = () => {
     documentH = document.body.scrollHeight;
     blocks = [].concat(...document.querySelectorAll(`.${name}`));
     const couples = blocks.map((node, i) => {
@@ -57,30 +52,18 @@
 
     points = [].concat(...couples);
     pathD = makeLine(points);
-    // TODO only once
+
+    paths = couples.map(([first]) => {
+      const { i } = first;
+      return makeLine(points.filter((p) => p.i <= i));
+    });
 
     if (!observed) {
-      // observed = true;
+      observed = true;
       blocks.map((node) => {
         const o = new MutationObserver(onMutation);
         o.observe(node, { attributes: true });
       });
-    }
-  };
-
-  const updatePoints = () => {
-    pathD = makeLine(points);
-    dashArray = pathEl.getTotalLength();
-    dashOffset = dashArray - pathEl.getTotalLength();
-  };
-
-  const createScrollPoints = () => {
-    dashArray = pathEl.getTotalLength();
-
-    scrollMap = [];
-    for (let i = 0; i < dashArray; i++) {
-      const { x, y } = pathEl.getPointAtLength(i);
-      scrollMap[Math.floor(y)] = { i, x, y };
     }
   };
 
@@ -90,14 +73,14 @@
 
   $: halfH = Math.floor($innerHeight / 2);
   $: clipH = $scrollY + halfH;
-  $: mounted && ($innerWidth || $innerHeight), update();
-  $: if (pathEl && pathD) setTimeout(createScrollPoints, 17);
-  $: current = scrollMap[$scrollY + halfH];
-  $: dashOffset = current ? dashArray - current.i : dashArray;
-  $: if (current) {
-    cx = current.x;
-    cy = current.y;
-  }
+  $: mounted && ($innerWidth || $innerHeight), renderPath();
+  $: dashOffset = dashArray;
+  // $: current = scrollMap[$scrollY + halfH];
+  // $: dashOffset = current ? dashArray - current.i : dashArray;
+  // $: if (current) {
+  //   cx = current.x;
+  //   cy = current.y;
+  // }
 </script>
 
 <div class="container" style="height: {documentH}px;">

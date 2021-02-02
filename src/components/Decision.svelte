@@ -1,48 +1,33 @@
 <script>
-  export let choices;
+  import { scaleDiverging } from "d3-scale";
+  import Outcome from "./Decision.Outcome.svelte";
+  import Input from "./Decision.Input.svelte";
+  export let choices = [];
 
-  let value;
+  const middle = Math.floor(choices.length / 2);
+  const scale = scaleDiverging()
+    .domain([0, middle, choices.length - 1])
+    .range([90, 0, -90]);
 
-  const slugify = (str) => str.toLowerCase().replace(/\W/g, "");
+  const data = choices.map((d, i) => ({
+    ...d,
+    slug: d.title.toLowerCase().replace(/\W/g, "").substring(0, 20),
+    rotate: scale(i),
+  }));
+
+  let active = Math.floor(data.length / 2);
 </script>
 
-{#if choices}
-  <div class="decision block">
-    <fieldset>
-      {#each choices as { hed, text }}
-        <input
-          id="{slugify(hed)}"
-          type="radio"
-          value="{hed}"
-          bind:group="{value}"
-        />
-        <label for="{slugify(hed)}">{hed}</label>
-      {/each}
-    </fieldset>
+{#if choices.length}
+  <div class="decision">
+    <Input data="{data}" bind:active />
+    <Outcome data="{data}" active="{active}" />
   </div>
 {/if}
 
 <style>
-  label {
-    user-select: none;
-    cursor: pointer;
-  }
-
-  input {
-    position: absolute;
-    clip: rect(1px, 1px, 1px, 1px);
-    padding: 0;
-    border: 0;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-  }
-
-  input[type="radio"]:checked + label {
-    background: yellow;
-  }
-
-  input[type="radio"]:focus + label {
-    box-shadow: 0 0 0 2px var(--focus);
+  .decision {
+    margin-top: 4em;
+    margin-bottom: 100px;
   }
 </style>

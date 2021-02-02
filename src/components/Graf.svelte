@@ -2,16 +2,13 @@
   import inView from "../actions/inView.js";
   import { innerHeight, bottomOffset } from "../stores/global.js";
   export let text;
-  export let align;
-  export let id;
-  export let connect;
   let visible;
 
   // $: $progress[index] = visible;
 </script>
 
 <p
-  class="block {align}"
+  class="block"
   class:visible
   use:inView="{{ bottom: $bottomOffset }}"
   on:enter="{() => (visible = true)}"
@@ -22,21 +19,14 @@
 
 <style>
   p {
-    width: 25em;
+    width: var(--col-width);
     opacity: 0.25;
     transition: opacity 0.25s;
     padding: 1em;
-    margin: 5em 0;
+    margin: 0 auto;
   }
 
   p.visible {
     opacity: 1;
-  }
-
-  .left {
-  }
-
-  .right {
-    align-self: flex-end;
   }
 </style>

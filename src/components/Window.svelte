@@ -1,20 +1,31 @@
 <script>
-  import throttle from "lodash.throttle";
-  import debounce from "lodash.debounce";
+  import debounceFn from "lodash.debounce";
   import { onMount } from "svelte";
   import { innerWidth, innerHeight, scrollY } from "../stores/global.js";
 
-  let h = 0;
-  let w = 0;
-  let y = 0;
+  export let debounce = 300;
+
+  let ticking = false;
+  let lastScrollY = 0;
 
   const onResize = () => {
-    $innerWidth = w;
-    $innerHeight = h;
+    $innerWidth = window.innerWidth;
+    $innerHeight = window.innerHeight;
+  };
+
+  const updateScrollY = () => {
+    $scrollY = lastScrollY;
+    ticking = false;
+  };
+
+  const requestTick = () => {
+    if (!ticking) requestAnimationFrame(updateScrollY);
+    ticking = true;
   };
 
   const onScroll = () => {
-    $scrollY = y;
+    lastScrollY = window.scrollY;
+    requestTick();
   };
 
   onMount(() => {
@@ -23,9 +34,6 @@
 </script>
 
 <svelte:window
-  on:resize="{debounce(onResize, 500)}"
-  on:scroll="{throttle(onScroll, 20)}"
-  bind:innerHeight="{h}"
-  bind:innerWidth="{w}"
-  bind:scrollY="{y}"
+  on:resize="{debounceFn(onResize, debounce)}"
+  on:scroll="{onScroll}"
 />

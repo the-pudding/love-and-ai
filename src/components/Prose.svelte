@@ -4,8 +4,8 @@
 </script>
 
 <div class="prose">
-  {#each grafs as { text, align, id, connect }}
-    <Graf text="{text}" align="{align}" />
+  {#each grafs as { value }}
+    <Graf text="{value}" />
   {/each}
 </div>
 

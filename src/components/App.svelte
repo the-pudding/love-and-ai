@@ -14,7 +14,7 @@
 
 <!-- <Header /> -->
 
-<Path name="block" />
+<!-- <Path name="block" /> -->
 <!-- <Path name="left" /> -->
 <!-- <Path name="right" /> -->
 
@@ -24,4 +24,5 @@
     <Decision choices="{section.decision}" />
   </section>
 {/each}
+
 <!-- <Footer /> -->
