@@ -1,8 +1,16 @@
 <script>
   export let data = [];
   export let active;
+  export let marginBottom = 0;
   $: current = data[active];
   $: r = current.rotate * -1;
+
+  const margin = (node, { type }) => {
+    if (type === "reality") {
+      const { height } = node.getBoundingClientRect();
+      marginBottom = Math.ceil(height);
+    }
+  };
 </script>
 
 <div class="decision-outcome" style="transform: rotate({r}deg);">
@@ -11,6 +19,7 @@
       class="outcome {type}"
       class:active="{active === i}"
       style="transform: rotate({rotate}deg) translateY(3em);"
+      use:margin="{{ type }}"
     >
       {#if text}
         {#each text as { value }}
@@ -37,7 +46,7 @@
     left: 0;
     width: calc(var(--col-width));
     transition: opacity 500ms ease-out;
-    opacity: 0;
+    opacity: 0.2;
   }
 
   .outcome.active {

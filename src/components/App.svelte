@@ -19,7 +19,7 @@
 <!-- <Path name="right" /> -->
 
 {#each copy.story as section, i}
-  <section id="section-{i}">
+  <section id="section-{i}" class="{section.class}">
     <Prose grafs="{section.prose}" />
     <Decision choices="{section.decision}" />
   </section>

@@ -20,17 +20,20 @@
 	--green: #34a29e;
 	--red: #ff533d;
 	--yellow: #e5e338;
+	--tan: #fffaf3;
+	--tanDarker: #fff5e7;
 
-	--bg: var(--white);
+	--bg: var(--tan);
 	--fg: var(--off-black);
 	--default: var(--gray-light);
 	--primary: var(--red);
 	--secondary: var(--green);
+	--accent: var(--tanDarker);
 
 	/* water.css */
 
 	--body-font: var(--serif);
-	--background-body: var(--white);
+	--background-body: var(--bg);
   --background-ui: var(--off-white);
   --background-alt: var(--off-white);
   --selection: var(--gray);
@@ -83,6 +86,14 @@ p {
 	line-height: 1.65;
 }
 
+.reality {
+
+}
+
+.gpt3 {
+	background: tan;
+}
+
 .prose span {
 	background: pink;
 	display: none;
@@ -90,4 +101,11 @@ p {
 
 .prose span.active {
 	display: inline;
+}
+
+button, label {
+	font-family: var(--sans);
+	border-radius: 4px;
+	line-height: 1;
+	padding: 0.5em;
 }

@@ -14,6 +14,7 @@
           <label for="{slug}" style="transform: rotate({-rotate + r}deg);"
             >{title}</label
           >
+          <!-- <label for="{slug}" style="transform: rotate({0}deg);">{title}</label> -->
         </div>
       </div>
     {/each}
@@ -33,7 +34,8 @@
     height: 100%;
     position: relative;
     border-radius: 50%;
-    border-style: dashed;
+    border-color: var(--fg);
+    background-color: var(--tanDarker);
   }
 
   .choice {
@@ -55,9 +57,10 @@
   label {
     user-select: none;
     cursor: pointer;
-    width: 15em;
     margin: 0 auto;
     transition: transform 500ms ease-out;
+    background-color: var(--fg);
+    color: var(--white);
   }
 
   input {
@@ -71,7 +74,7 @@
   }
 
   input[type="radio"]:checked + label {
-    background: yellow;
+    box-shadow: 0 0 0 2px var(--focus);
   }
 
   input[type="radio"]:focus + label {
