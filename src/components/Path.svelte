@@ -5,14 +5,14 @@
 
   export let selector;
 
+  let mounted = false;
   let documentH = 0;
-  let mounted;
   let points = [];
   let pathD = "";
-  let pathEl;
+  let pathEl = null;
   let dashArray = 0;
   let end = 0;
-  let blocks;
+  let blocks = null;
   let observed;
   let cx = 0;
   let cy = 0;
@@ -30,6 +30,7 @@
   };
 
   const renderPath = () => {
+    if (!mounted) return false;
     documentH = document.body.scrollHeight;
     blocks = [].concat(...document.querySelectorAll(`${selector}`));
 

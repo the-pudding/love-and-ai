@@ -37,8 +37,6 @@
     text: d.type === "reality" ? d.text : positionText(d.text),
   }));
 
-  console.log(data);
-
   let active = Math.floor(data.length / 2);
 
   let marginBottom = 0;
