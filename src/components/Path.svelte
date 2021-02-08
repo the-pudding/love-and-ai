@@ -1,14 +1,12 @@
 <script>
-  // import { line, curveCatmullRom } from "d3-shape";
   import { onMount } from "svelte";
   import makeLine from "../utils/makeLine.js";
-  import { innerWidth, innerHeight, scrollY } from "../stores/global.js";
+  import { windowWidth, windowHeight, scrollY } from "../stores/global.js";
 
-  export let name;
+  export let selector;
 
   let documentH = 0;
   let mounted;
-  let paths = [];
   let points = [];
   let pathD = "";
   let pathEl;
@@ -19,10 +17,7 @@
   let cx = 0;
   let cy = 0;
 
-  // const makeLine = line()
-  //   .x((d) => d.x)
-  //   .y((d) => d.y)
-  //   .curve(curveCatmullRom.alpha(1));
+  export const render = () => renderPath();
 
   const progress = () => {
     const visible = blocks.map((node) => node.className.includes("visible"));
@@ -30,36 +25,25 @@
   };
 
   const onMutation = (mutations, observer) => {
-    const classChange = !!mutations.find((m) => {
-      return m.attributeName === "class";
-    });
+    const classChange = !!mutations.find((m) => m.attributeName === "class");
     if (classChange) progress();
   };
 
   const renderPath = () => {
     documentH = document.body.scrollHeight;
-    blocks = [].concat(...document.querySelectorAll(`.${name}`));
-    const couples = blocks.map((node, i) => {
-      const { top, left, width, height } = node.getBoundingClientRect();
-      const y0 = $scrollY + top;
-      const y1 = y0 + height;
+    blocks = [].concat(...document.querySelectorAll(`${selector}`));
+
+    points = blocks.map((node, i) => {
+      const { top, left, width } = node.getBoundingClientRect();
+      const y = $scrollY + top;
       const x = left + width / 2;
-      return [
-        { x, y: y0, i },
-        { x, y: y1, i },
-      ];
+      return { x, y, i };
     });
 
-    points = [].concat(...couples);
     pathD = makeLine(points);
 
-    paths = couples.map(([first]) => {
-      const { i } = first;
-      return makeLine(points.filter((p) => p.i <= i));
-    });
-
     if (!observed) {
-      observed = true;
+      // observed = true;
       blocks.map((node) => {
         const o = new MutationObserver(onMutation);
         o.observe(node, { attributes: true });
@@ -71,9 +55,9 @@
     mounted = true;
   });
 
-  $: halfH = Math.floor($innerHeight / 2);
+  $: halfH = Math.floor($windowHeight / 2);
   $: clipH = $scrollY + halfH;
-  $: mounted && ($innerWidth || $innerHeight), renderPath();
+  $: mounted && ($windowWidth || $windowHeight), renderPath();
   $: dashOffset = dashArray;
   // $: current = scrollMap[$scrollY + halfH];
   // $: dashOffset = current ? dashArray - current.i : dashArray;
@@ -83,11 +67,11 @@
   // }
 </script>
 
-<div class="container" style="height: {documentH}px;">
+<div class="path-container" style="height: {documentH}px;">
   <svg>
     <!-- <defs>
       <clipPath id="clip-{name}">
-        <rect x="0" y="0" width="{$innerWidth}" height="{clipH}"></rect>
+        <rect x="0" y="0" width="{$windowWidth}" height="{clipH}"></rect>
       </clipPath>
     </defs> -->
 
@@ -99,13 +83,12 @@
       bind:this="{pathEl}"
       d="{pathD}"
       stroke-dasharray="{dashArray}"
-      stroke-dashoffset="{dashOffset}"
-    ></path>
+      stroke-dashoffset="{dashOffset}"></path>
     <!-- </g> -->
 
     <g>
       {#each points as { x, y }}
-        <circle cx="{x}" cy="{y}" r="5"></circle>
+        <circle cx="{x}" cy="{y}" r="10"></circle>
       {/each}
     </g>
     <circle cx="{cx}" cy="{cy}" r="10"></circle>
@@ -126,13 +109,9 @@
     /* transition: stroke-dashoffset 200ms linear; */
   }
 
-  rect {
-    transition: height 200ms;
+  circle {
+    fill: blue;
   }
-
-  /* circle {
-    transition: stroke-dashoffset 200ms linear;
-  } */
 
   .hidden {
     display: none;
@@ -147,7 +126,7 @@
     stroke-width: 8px;
   }
 
-  .container {
+  .path-container {
     position: absolute;
     top: 0;
     left: 0;

@@ -91,7 +91,7 @@ p {
 }
 
 .gpt3 {
-	background: tan;
+	font-family: var(--mono);
 }
 
 .prose span {

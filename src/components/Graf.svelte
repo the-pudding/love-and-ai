@@ -1,6 +1,6 @@
 <script>
   import inView from "../actions/inView.js";
-  import { innerHeight, bottomOffset } from "../stores/global.js";
+  import { bottomOffset } from "../stores/global.js";
   export let text;
   let visible;
 
@@ -8,7 +8,7 @@
 </script>
 
 <p
-  class="block"
+  class="block locked"
   class:visible
   use:inView="{{ bottom: $bottomOffset }}"
   on:enter="{() => (visible = true)}"

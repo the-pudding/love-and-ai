@@ -1,7 +1,13 @@
 <script>
+  import { createEventDispatcher, tick } from "svelte";
+
   export let data = [];
   export let active;
   export let marginBottom = 0;
+
+  const dispatch = createEventDispatcher();
+  let locked = 1;
+
   $: current = data[active];
   $: r = current.rotate * -1;
 
@@ -11,9 +17,19 @@
       marginBottom = Math.ceil(height);
     }
   };
+
+  const onTransitionEnd = async (e) => {
+    locked = active;
+    await tick();
+    dispatch("change");
+  };
 </script>
 
-<div class="decision-outcome" style="transform: rotate({r}deg);">
+<div
+  class="decision-outcome"
+  style="transform: rotate({r}deg);"
+  on:transitionend|self="{onTransitionEnd}"
+>
   {#each data as { text, type, rotate }, i}
     <div
       class="outcome {type}"
@@ -23,7 +39,21 @@
     >
       {#if text}
         {#each text as { value }}
-          <p>{@html value}</p>
+          <p>
+            {#if typeof value === "string"}
+              <span class="block" class:locked="{locked === i}"
+                >{@html value}</span
+              >
+            {:else}
+              {#each value as { chunk, offset }}
+                <span
+                  class="block chunk"
+                  class:locked="{locked === i}"
+                  style="transform: translateX({offset}px);">{chunk}</span
+                >
+              {/each}
+            {/if}
+          </p>
         {/each}
       {/if}
     </div>
@@ -55,5 +85,14 @@
 
   p {
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .generation span {
+    display: inline-block;
+    /* flex-shrink: 1; */
+    border: 1px solid var(--fg);
   }
 </style>

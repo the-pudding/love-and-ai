@@ -5,7 +5,7 @@
   $: r = current.rotate;
 </script>
 
-<div class="decision-input block" style="transform: rotate({-r}deg);">
+<div class="decision-input" style="transform: rotate({-r}deg);">
   <fieldset>
     {#each data as { slug, title, rotate }, i}
       <div class="choice">
@@ -19,6 +19,7 @@
       </div>
     {/each}
   </fieldset>
+  <div class="block locked"></div>
 </div>
 
 <style>
@@ -79,5 +80,12 @@
 
   input[type="radio"]:focus + label {
     box-shadow: 0 0 0 2px var(--focus);
+  }
+
+  .block {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
   }
 </style>

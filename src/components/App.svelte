@@ -1,5 +1,5 @@
 <script>
-  import Window from "./Window.svelte";
+  import Window from "./helpers/Window.svelte";
   import Meta from "./Meta.svelte";
   import Header from "./pudding/Header.svelte";
   import Footer from "./pudding/Footer.svelte";
@@ -7,6 +7,11 @@
   import Prose from "./Prose.svelte";
   import Decision from "./Decision.svelte";
   import copy from "../data/copy.json";
+
+  let path;
+  const onChange = () => {
+    path.render();
+  };
 </script>
 
 <Window />
@@ -14,14 +19,12 @@
 
 <!-- <Header /> -->
 
-<!-- <Path name="block" /> -->
-<!-- <Path name="left" /> -->
-<!-- <Path name="right" /> -->
+<Path selector=".block.locked" bind:this="{path}" />
 
 {#each copy.story as section, i}
   <section id="section-{i}" class="{section.class}">
     <Prose grafs="{section.prose}" />
-    <Decision choices="{section.decision}" />
+    <Decision choices="{section.decision}" on:change="{onChange}" />
   </section>
 {/each}
 
