@@ -10,12 +10,16 @@
 
     let i = 0;
     const output = grafs.map((graf) => {
+      const count = graf.length;
+      const id = graf[0].replace(/\W/g, "").slice(0, 20);
       const value = [];
-      graf.forEach((chunk) => {
+      graf.forEach((chunk, index) => {
         const s = Math.sin((i / total) * Math.PI * 2) * -1;
+        const side = s < 0 ? "left" : "right";
         const jitter = 15 - Math.random() * 30;
-        const offset = Math.round(s * 50 + jitter);
-        value.push({ chunk, offset });
+        const offset =
+          index === 0 || count < 4 ? 0 : Math.round(s * 50 + jitter);
+        value.push({ chunk, offset, id, side, count, index });
         i += 1;
       });
       return { value };

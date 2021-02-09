@@ -45,10 +45,14 @@
                 >{@html value}</span
               >
             {:else}
-              {#each value as { chunk, offset }}
+              {#each value as { chunk, offset, id, side, count, index }}
                 <span
                   class="block chunk"
                   class:locked="{locked === i}"
+                  data-id="{id}"
+                  data-side="{side}"
+                  data-count="{count}"
+                  data-index="{index}"
                   style="transform: translateX({offset}px);">{chunk}</span
                 >
               {/each}

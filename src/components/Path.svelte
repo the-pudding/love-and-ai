@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
-  import makeLine from "../utils/makeLine.js";
+  import { line, curveStepAfter } from "d3-shape";
+  // import makeLine from "../utils/makeLine.js";
   import { windowWidth, windowHeight, scrollY } from "../stores/global.js";
 
   export let selector;
@@ -16,6 +17,11 @@
   let observed;
   let cx = 0;
   let cy = 0;
+
+  const makeLine = line()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(curveStepAfter);
 
   export const render = () => renderPath();
 
@@ -34,11 +40,38 @@
     documentH = document.body.scrollHeight;
     blocks = [].concat(...document.querySelectorAll(`${selector}`));
 
-    points = blocks.map((node, i) => {
-      const { top, left, width } = node.getBoundingClientRect();
+    const extents = {};
+    const withVals = blocks.map((node, i) => {
+      const { top, left, right, width } = node.getBoundingClientRect();
+      const { id, side, count, index } = node.dataset;
       const y = $scrollY + top;
       const x = left + width / 2;
-      return { x, y, i };
+      if (id) {
+        if (!extents[id]) extents[id] = { left: [], right: [] };
+        extents[id].left.push(left);
+        extents[id].right.push(right);
+      }
+      return { i, id, x, y, left, right, side, count, index };
+    });
+
+    Object.keys(extents).map((key) => {
+      extents[key].left.sort((a, b) => a - b);
+      extents[key].right.sort((a, b) => b - a);
+    });
+
+    points = withVals.map((d) => {
+      let x = d.x;
+      let y = d.y;
+      let i = d.i;
+      if (d.id && d.count > 3) {
+        const e = extents[d.id];
+        if (e[d.side][0] === d[d.side]) e.maxed = true;
+        if (d.index > 0) {
+          x = e.maxed ? e[d.side][0] : e[d.side][1];
+          x += d.side === "left" ? -16 : 16;
+        }
+      }
+      return { i, x, y };
     });
 
     pathD = makeLine(points);
