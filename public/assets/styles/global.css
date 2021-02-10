@@ -1,6 +1,7 @@
 :root {
 	--sans: "National 2 Web", Helvetica, Arial, sans-serif;
 	--serif: "Tiempos Text Web", Georgia, Times, serif;
+	--headline: "Tiempos Headline Web", Georgia, Times, serif;
 	--mono: Menlo, Consolas, Monaco, "Courier New", monospace;
 	
 	--z-bottom: -100;
@@ -21,7 +22,11 @@
 	--red: #ff533d;
 	--yellow: #e5e338;
 	--tan: #fffaf3;
-	--tanDarker: #fff5e7;
+	--tan-mid: #fff5e7;
+	--tan-dark: #FBE7C9;
+	--path-green: #5AA471;
+
+	--love-peach-light: #FAE8DD;
 
 	--bg: var(--tan);
 	--fg: var(--off-black);
@@ -52,6 +57,7 @@
 	--highlight: var(--yellow);
 
 	--col-width: 28em;
+	--wheel-width: 22em;
 }
 
 .skip-to-main {
@@ -91,16 +97,52 @@ p {
 }
 
 .gpt3 {
+	/* font-family: var(--mono);*/
+	background: var(--tan-mid);
+	font-family: var(--sans);
+}
+.section-break {
+	border-top: 1px solid var(--off-black);
+}
+
+#intro h1 span {
+	background: var(--tan);
+	border: 1px solid var(--off-black);
+	box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
+	border-radius: 5px;
+	padding: 0.25rem 0.5rem;
 	font-family: var(--mono);
 }
 
 .prose span {
-	background: pink;
+	background: var(--tan);
 	display: none;
+	border: 1px solid var(--off-black);
+	box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
+	border-radius: 5px;
+	padding: 0.25rem 0.5rem;
+	font-family: var(--mono);
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
 }
 
 .prose span.active {
 	display: inline;
+}
+
+.prose span.switch {
+	display: inline;
+}
+
+.prose span.switch::before {
+	content: url("../images/repeat.svg");
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	transform: scale(0.75);
+	position: relative;
+	top: 0.25rem;
+    left: -0.25rem;
 }
 
 button, label {

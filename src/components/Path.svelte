@@ -152,12 +152,13 @@
   }
 
   path.bg {
-    stroke: var(--gray-light);
+    stroke: var(--tan-dark);
     stroke-width: 2px;
   }
 
   path.fg {
-    stroke-width: 8px;
+    stroke-width: 4px;
+    stroke: var(--path-green);
   }
 
   .path-container {
@@ -166,6 +167,6 @@
     left: 0;
     width: 100%;
     z-index: var(--z-bottom);
-    background: rgba(255, 0, 0, 0.1);
+    /* background: rgba(255, 0, 0, 0.1); */
   }
 </style>
