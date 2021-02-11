@@ -24,8 +24,8 @@
 
 <style>
   .decision-input {
-    width: var(--col-width);
-    height: var(--col-width);
+    width: var(--wheel-width);
+    height: var(--wheel-width);
     margin: 0 auto;
     transition: transform 500ms ease-in-out;
     transform-origin: 50% 50%;
@@ -36,22 +36,22 @@
     position: relative;
     border-radius: 50%;
     border-color: var(--fg);
-    background-color: var(--tanDarker);
+    /* background-color: var(--tan-mid); */
   }
 
   .choice {
     position: absolute;
     top: 0;
     left: 0;
-    width: var(--col-width);
+    width: var(--wheel-width);
     text-align: center;
     z-index: var(--z-top);
-    transform: translate(0, calc(var(--col-width)));
+    transform: translate(0, calc(var(--wheel-width)));
     pointer-events: none;
   }
 
   .rotate {
-    transform-origin: 50% calc(var(--col-width) / -2);
+    transform-origin: 50% calc(var(--wheel-width) / -2);
     pointer-events: auto;
   }
 

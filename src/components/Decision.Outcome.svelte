@@ -68,14 +68,14 @@
   .decision-outcome {
     position: relative;
     transition: transform 500ms ease-out;
-    transform-origin: 50% calc(var(--col-width) / -2);
+    transform-origin: 50% calc(var(--wheel-width) / -2);
     width: var(--col-width);
     margin: 0 auto;
   }
 
   .outcome {
     position: absolute;
-    transform-origin: 50% calc(var(--col-width) / -2);
+    transform-origin: 50% calc(var(--wheel-width) / -2);
     top: 0;
     left: 0;
     width: calc(var(--col-width));
@@ -97,6 +97,11 @@
   .generation span {
     display: inline-block;
     /* flex-shrink: 1; */
-    border: 1px solid var(--fg);
+    background: var(--tan);
+    border: 1px solid var(--off-black);
+    box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+    font-family: var(--mono);
   }
 </style>

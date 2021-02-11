@@ -24,6 +24,7 @@
     transition: opacity 0.25s;
     padding: 1em;
     margin: 0 auto;
+    line-height: 2;
   }
 
   p.visible {

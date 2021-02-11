@@ -48,6 +48,7 @@
 
 {#if choices.length}
   <div class="decision" style="margin-bottom: {marginBottom}px;">
+    <p class="leadin">{choices[0].leadin}</p>
     <Input data="{data}" bind:active />
     <Outcome data="{data}" active="{active}" bind:marginBottom on:change />
   </div>
@@ -57,5 +58,19 @@
   .decision {
     margin-top: 4em;
     padding-bottom: 4em;
+    position: relative;
+  }
+
+  .leadin {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    margin: -2em 0 0 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 15rem;
+    font-family: var(--sans);
+    font-size: 1.75rem;
   }
 </style>

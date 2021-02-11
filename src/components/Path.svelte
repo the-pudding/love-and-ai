@@ -149,12 +149,13 @@
   }
 
   path.bg {
-    stroke: var(--gray-light);
+    stroke: var(--tan-dark);
     stroke-width: 2px;
   }
 
   path.fg {
     stroke-width: 4px;
+    stroke: var(--path-green);
   }
 
   .path-container {

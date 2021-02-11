@@ -5,6 +5,7 @@
   import Path from "./Path.svelte";
   import Prose from "./Prose.svelte";
   import Decision from "./Decision.svelte";
+  import Intro from "./Intro.svelte";
   import copy from "../data/copy.json";
 
   let path;
@@ -15,12 +16,14 @@
 
 <Meta />
 
-<!-- <Header /> -->
+<Header />
+<Intro />
 
 <Path selector=".block.locked" bind:this="{path}" />
 
 {#each copy.story as section, i}
   <section id="section-{i}" class="{section.class}">
+    <div class="section-break"></div>
     <Prose grafs="{section.prose}" />
     <Decision choices="{section.decision}" on:change="{onChange}" />
   </section>
