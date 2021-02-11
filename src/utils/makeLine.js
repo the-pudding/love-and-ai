@@ -5,6 +5,7 @@ export default function makeLine(arr) {
 		let path = "";
 
 		if (next && next.x !== x) {
+			// console.log(i, index, x, next.x);
 			const x2 = next.index === 0 ? x : next.x;
 			const y2 = next.index === 0 ? next.y : y;
 			path = `L${x} ${y}L${x2} ${y2}`;

@@ -6,6 +6,8 @@
 
   export let selector;
 
+  const step = 1;
+
   let mounted = false;
   let documentH = 0;
   let points = [];
@@ -15,8 +17,7 @@
   let end = 0;
   let blocks = null;
   let observed;
-  let cx = 0;
-  let cy = 0;
+  let scrollMap = {};
 
   export const render = () => renderPath();
 
@@ -28,6 +29,18 @@
   const onMutation = (mutations, observer) => {
     const classChange = !!mutations.find((m) => m.attributeName === "class");
     if (classChange) progress();
+  };
+
+  const createScrollPoints = () => {
+    dashArray = pathEl.getTotalLength();
+    scrollMap = {};
+    console.time("create");
+    for (let i = 0; i < dashArray; i += step) {
+      const { x, y } = pathEl.getPointAtLength(i);
+      const floor = Math.floor(y / 10);
+      scrollMap[floor] = i;
+    }
+    console.timeEnd("create");
   };
 
   const renderPath = () => {
@@ -74,22 +87,30 @@
     pathD = makeLine(points);
 
     if (!observed) {
-      // observed = true;
+      observed = true;
       blocks.map((node) => {
         const o = new MutationObserver(onMutation);
         o.observe(node, { attributes: true });
       });
     }
+
+    setTimeout(createScrollPoints, 17);
   };
+
+  // const tweenPath = (y) => {
+  //   const key =
+  //   dashOffset =
+  // };
 
   onMount(() => {
     mounted = true;
   });
 
   $: halfH = Math.floor($viewport.height / 2);
-  $: clipH = $scrollY + halfH;
   $: mounted && ($viewport.width || $viewport.height), renderPath();
-  $: dashOffset = dashArray;
+  $: scrollIndex = Math.floor(($scrollY + halfH) / 10);
+  $: dashOffset = dashArray - (scrollMap[scrollIndex] || 0);
+  // $: tweenPath($scrollY);
   // $: current = scrollMap[$scrollY + halfH];
   // $: dashOffset = current ? dashArray - current.i : dashArray;
   // $: if (current) {
@@ -100,22 +121,14 @@
 
 <div class="path-container" style="height: {documentH}px;">
   <svg>
-    <!-- <defs>
-      <clipPath id="clip-{name}">
-        <rect x="0" y="0" width="{$viewport.width}" height="{clipH}"></rect>
-      </clipPath>
-    </defs> -->
-
     <path class="bg" d="{pathD}"></path>
 
-    <!-- <g id="my-graphic" clip-path="url(#clip-{name})"> -->
     <path
       class="fg"
       bind:this="{pathEl}"
       d="{pathD}"
       stroke-dasharray="{dashArray}"
       stroke-dashoffset="{dashOffset}"></path>
-    <!-- </g> -->
 
     <g>
       {#each points as { x, y }}
@@ -132,20 +145,16 @@
     height: 100%;
   }
 
+  circle {
+    fill: gray;
+  }
+
   path {
     fill: none;
     stroke: var(--fg);
     stroke-linecap: round;
     /* will-change: ; */
     /* transition: stroke-dashoffset 200ms linear; */
-  }
-
-  circle {
-    fill: gray;
-  }
-
-  .hidden {
-    display: none;
   }
 
   path.bg {

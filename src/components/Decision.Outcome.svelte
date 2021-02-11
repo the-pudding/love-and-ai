@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher, tick } from "svelte";
+  import { createEventDispatcher, tick, onMount } from "svelte";
 
   export let data = [];
   export let active;
@@ -8,14 +8,14 @@
   const dispatch = createEventDispatcher();
   let locked = 1;
 
+  const margins = [];
+
   $: current = data[active];
   $: r = current.rotate * -1;
+  $: active, (marginBottom = margins[active]);
 
   const margin = (node, { type }) => {
-    if (type === "reality") {
-      const { height } = node.getBoundingClientRect();
-      marginBottom = Math.ceil(height);
-    }
+    margins.push(node.offsetHeight);
   };
 
   const onTransitionEnd = async (e) => {
@@ -23,6 +23,10 @@
     await tick();
     dispatch("change");
   };
+
+  onMount(() => {
+    marginBottom = margins[locked];
+  });
 </script>
 
 <div
@@ -34,6 +38,7 @@
     <div
       class="outcome {type}"
       class:active="{active === i}"
+      class:inactive="{Math.abs(active - i) === 2}"
       style="transform: rotate({rotate}deg) translateY(3em);"
       use:margin="{{ type }}"
     >
@@ -87,11 +92,21 @@
     opacity: 1;
   }
 
+  .outcome.inactive {
+    opacity: 0;
+  }
+
   p {
     padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    filter: blur(4px);
+  }
+
+  .active p {
+    filter: blur(0);
+    transition: filter 250ms ease-in-out;
   }
 
   .generation span {

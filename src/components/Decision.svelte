@@ -32,7 +32,7 @@
 
   const scale = scaleDiverging()
     .domain([0, middle, choices.length - 1])
-    .range([90, 0, -90]);
+    .range([60, 0, -60]);
 
   const data = choices.map((d, i) => ({
     ...d,
@@ -59,6 +59,7 @@
     margin-top: 4em;
     padding-bottom: 4em;
     position: relative;
+    transition: margin-bottom 500ms ease-out;
   }
 
   .leadin {
