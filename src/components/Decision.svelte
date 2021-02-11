@@ -14,7 +14,7 @@
       const id = graf[0].replace(/\W/g, "").slice(0, 20);
       const value = [];
       graf.forEach((chunk, index) => {
-        const s = Math.sin((i / total) * Math.PI * 2) * -1;
+        const s = Math.sin(((i + 0.0001) / total) * Math.PI * 2) * -1;
         const side = s < 0 ? "left" : "right";
         const jitter = 15 - Math.random() * 30;
         const offset =

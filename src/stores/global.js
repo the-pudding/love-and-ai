@@ -1,6 +1,4 @@
-import { writable, derived } from "svelte/store";
+import { derived } from "svelte/store";
+import viewport from "./viewport.js";
 
-export const windowWidth = writable(0);
-export const windowHeight = writable(0);
-export const scrollY = writable(0);
-export const bottomOffset = derived(windowHeight, $windowHeight => Math.round($windowHeight * 0.25));
+export const bottomOffset = derived(viewport, $viewport => Math.round($viewport.height * 0.25));

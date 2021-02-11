@@ -1,8 +1,8 @@
 <script>
   import { onMount } from "svelte";
-  import { line, curveStepAfter } from "d3-shape";
-  // import makeLine from "../utils/makeLine.js";
-  import { windowWidth, windowHeight, scrollY } from "../stores/global.js";
+  import makeLine from "../utils/makeLine.js";
+  import scrollY from "../stores/scrollY.js";
+  import viewport from "../stores/viewport.js";
 
   export let selector;
 
@@ -17,11 +17,6 @@
   let observed;
   let cx = 0;
   let cy = 0;
-
-  const makeLine = line()
-    .x((d) => d.x)
-    .y((d) => d.y)
-    .curve(curveStepAfter);
 
   export const render = () => renderPath();
 
@@ -51,7 +46,7 @@
         extents[id].left.push(left);
         extents[id].right.push(right);
       }
-      return { i, id, x, y, left, right, side, count, index };
+      return { i, id, x, y, left, right, side, count: +count, index: +index };
     });
 
     Object.keys(extents).map((key) => {
@@ -63,6 +58,8 @@
       let x = d.x;
       let y = d.y;
       let i = d.i;
+      let side = d.side;
+      let index = d.index;
       if (d.id && d.count > 3) {
         const e = extents[d.id];
         if (e[d.side][0] === d[d.side]) e.maxed = true;
@@ -71,7 +68,7 @@
           x += d.side === "left" ? -16 : 16;
         }
       }
-      return { i, x, y };
+      return { i, x, y, side, index };
     });
 
     pathD = makeLine(points);
@@ -89,9 +86,9 @@
     mounted = true;
   });
 
-  $: halfH = Math.floor($windowHeight / 2);
+  $: halfH = Math.floor($viewport.height / 2);
   $: clipH = $scrollY + halfH;
-  $: mounted && ($windowWidth || $windowHeight), renderPath();
+  $: mounted && ($viewport.width || $viewport.height), renderPath();
   $: dashOffset = dashArray;
   // $: current = scrollMap[$scrollY + halfH];
   // $: dashOffset = current ? dashArray - current.i : dashArray;
@@ -105,7 +102,7 @@
   <svg>
     <!-- <defs>
       <clipPath id="clip-{name}">
-        <rect x="0" y="0" width="{$windowWidth}" height="{clipH}"></rect>
+        <rect x="0" y="0" width="{$viewport.width}" height="{clipH}"></rect>
       </clipPath>
     </defs> -->
 
@@ -122,10 +119,9 @@
 
     <g>
       {#each points as { x, y }}
-        <circle cx="{x}" cy="{y}" r="10"></circle>
+        <circle cx="{x}" cy="{y}" r="5"></circle>
       {/each}
     </g>
-    <circle cx="{cx}" cy="{cy}" r="10"></circle>
   </svg>
 </div>
 
@@ -139,12 +135,13 @@
   path {
     fill: none;
     stroke: var(--fg);
+    stroke-linecap: round;
     /* will-change: ; */
     /* transition: stroke-dashoffset 200ms linear; */
   }
 
   circle {
-    fill: blue;
+    fill: gray;
   }
 
   .hidden {
@@ -157,7 +154,7 @@
   }
 
   path.fg {
-    stroke-width: 8px;
+    stroke-width: 4px;
   }
 
   .path-container {
@@ -166,6 +163,6 @@
     left: 0;
     width: 100%;
     z-index: var(--z-bottom);
-    background: rgba(255, 0, 0, 0.1);
+    /* background: rgba(255, 0, 0, 0.1); */
   }
 </style>
