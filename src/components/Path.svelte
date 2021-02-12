@@ -11,6 +11,7 @@
   let mounted = false;
   let documentH = 0;
   let points = [];
+  let yPositions = [];
   let pathD = "";
   let pathEl = null;
   let dashArray = 0;
@@ -84,6 +85,9 @@
       return { i, x, y, side, index };
     });
 
+    yPositions = points.map((d) => d.y);
+    yPositions.reverse();
+
     pathD = makeLine(points);
 
     if (!observed) {
@@ -97,10 +101,12 @@
     setTimeout(createScrollPoints, 17);
   };
 
-  // const tweenPath = (y) => {
-  //   const key =
-  //   dashOffset =
-  // };
+  const getYPos = (y) => {
+    console.log(y, yPositions);
+    const match = yPositions.find((d) => y >= d);
+    if (!match) return 0;
+    return scrollMap[Math.floor(match / step)];
+  };
 
   onMount(() => {
     mounted = true;
@@ -108,8 +114,7 @@
 
   $: halfH = Math.floor($viewport.height / 2);
   // $: mounted && ($viewport.width || $viewport.height), renderPath();
-  $: scrollIndex = Math.floor(($scrollY + halfH) / 10);
-  $: dashOffset = dashArray - (scrollMap[scrollIndex] || 0);
+  $: dashOffset = dashArray - getYPos($scrollY);
   // $: tweenPath($scrollY);
   // $: current = scrollMap[$scrollY + halfH];
   // $: dashOffset = current ? dashArray - current.i : dashArray;

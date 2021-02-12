@@ -18,11 +18,11 @@
 <style>
   p {
     width: var(--col-width);
-    opacity: 0;
     transition: opacity 500ms ease-out;
     padding: 1em;
     margin: 0 auto;
     line-height: 2;
+    opacity: 1;
   }
 
   p.visible {

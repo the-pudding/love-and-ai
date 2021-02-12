@@ -84,7 +84,7 @@
     padding-bottom: 4em;
     position: relative;
     transition: all 500ms ease-out;
-    opacity: 0;
+    opacity: 1;
   }
 
   .decision.visible {
