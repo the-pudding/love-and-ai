@@ -1,16 +1,20 @@
+<script>
+  export let copy;
+</script>
+
 <svelte:head>
-  <title>Svelte Starter</title>
+  <title>{copy.title}</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  <meta name="description" content="{copy.description}" />
+  <meta name="author" content="The Pudding" />
   <meta name="news_keywords" content="" />
 
-  <meta property="og:title" content="" />
+  <meta property="og:title" content="{copy.title}" />
   <meta property="og:site_name" content="" />
   <meta property="og:url" content="" />
-  <meta property="og:description" content="description" />
+  <meta property="og:description" content="{copy.description}" />
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="en_US" />
 
@@ -20,10 +24,10 @@
   <meta property="og:image:height" content="600" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="" />
-  <meta name="twitter:creator" content="" />
-  <meta name="twitter:title" content="" />
-  <meta name="twitter:description" content="" />
+  <meta name="twitter:site" content="https://pudding.cool" />
+  <meta name="twitter:creator" content="@puddingviz" />
+  <meta name="twitter:title" content="{copy.title}" />
+  <meta name="twitter:description" content="{copy.description}" />
   <meta name="twitter:image:src" content="" />
 
   <meta name="robots" content="max-image-preview:large" />

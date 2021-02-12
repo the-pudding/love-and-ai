@@ -3,8 +3,6 @@
   import { bottomOffset } from "../stores/global.js";
   export let text;
   let visible;
-
-  // $: $progress[index] = visible;
 </script>
 
 <p
@@ -20,8 +18,8 @@
 <style>
   p {
     width: var(--col-width);
-    opacity: 0.25;
-    transition: opacity 0.25s;
+    opacity: 0;
+    transition: opacity 500ms ease-out;
     padding: 1em;
     margin: 0 auto;
     line-height: 2;

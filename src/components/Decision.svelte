@@ -2,7 +2,10 @@
   import { scaleDiverging } from "d3-scale";
   import Outcome from "./Decision.Outcome.svelte";
   import Input from "./Decision.Input.svelte";
+  import inView from "../actions/inView.js";
+  import { bottomOffset } from "../stores/global.js";
   export let choices = [];
+  let visible;
 
   const positionText = (arr) => {
     const grafs = arr.map((d) => d.value.split("<br>"));
@@ -42,15 +45,36 @@
   }));
 
   let active = Math.floor(data.length / 2);
+  let prev = active;
 
   let marginBottom = 0;
+  let dur = "500ms";
+
+  $: {
+    const diff = Math.abs(active - prev);
+    dur = `${500 * diff}ms`;
+    prev = active;
+  }
 </script>
 
 {#if choices.length}
-  <div class="decision" style="margin-bottom: {marginBottom}px;">
+  <div
+    class="decision"
+    style="margin-bottom: {marginBottom}px;"
+    class:visible
+    use:inView="{{ bottom: $bottomOffset }}"
+    on:enter="{() => (visible = true)}"
+    on:exit="{() => (visible = false)}"
+  >
     <p class="leadin">{choices[0].leadin}</p>
-    <Input data="{data}" bind:active />
-    <Outcome data="{data}" active="{active}" bind:marginBottom on:change />
+    <Input data="{data}" bind:active dur="{dur}" />
+    <Outcome
+      data="{data}"
+      active="{active}"
+      dur="{dur}"
+      bind:marginBottom
+      on:change
+    />
   </div>
 {/if}
 
@@ -59,19 +83,25 @@
     margin-top: 4em;
     padding-bottom: 4em;
     position: relative;
-    transition: margin-bottom 500ms ease-out;
+    transition: all 500ms ease-out;
+    opacity: 0;
+  }
+
+  .decision.visible {
+    opacity: 1;
   }
 
   .leadin {
     position: absolute;
     text-align: center;
     width: 100%;
+    max-width: 10em;
     top: 50%;
-    margin: -2em 0 0 0;
+    margin: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 15rem;
+    transform: translate(-50%, -100%);
     font-family: var(--sans);
-    font-size: 1.75rem;
+    font-size: 1.5em;
+    line-height: 1.2;
   }
 </style>

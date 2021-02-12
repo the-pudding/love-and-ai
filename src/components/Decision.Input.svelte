@@ -1,11 +1,17 @@
 <script>
+  import css from "../actions/css.js";
   export let data;
   export let active;
+  export let dur;
   $: current = data[active];
   $: r = current.rotate;
 </script>
 
-<div class="decision-input" style="transform: rotate({-r}deg);">
+<div
+  class="decision-input"
+  style="transform: rotate({-r}deg);"
+  use:css="{{ dur }}"
+>
   <fieldset>
     {#each data as { slug, title, rotate }, i}
       <div class="choice">
@@ -14,7 +20,6 @@
           <label for="{slug}" style="transform: rotate({-rotate + r}deg);"
             >{title}</label
           >
-          <!-- <label for="{slug}" style="transform: rotate({0}deg);">{title}</label> -->
         </div>
       </div>
     {/each}
@@ -24,10 +29,11 @@
 
 <style>
   .decision-input {
+    --dur: 500ms;
     width: var(--wheel-width);
     height: var(--wheel-width);
     margin: 0 auto;
-    transition: transform 500ms ease-in-out;
+    transition: transform var(--dur) ease-in-out;
     transform-origin: 50% 50%;
   }
 
@@ -59,7 +65,7 @@
     user-select: none;
     cursor: pointer;
     margin: 0 auto;
-    transition: transform 500ms ease-out;
+    transition: transform var(--dur) ease-out;
     background-color: var(--fg);
     color: var(--white);
   }

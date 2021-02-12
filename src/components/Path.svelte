@@ -34,13 +34,13 @@
   const createScrollPoints = () => {
     dashArray = pathEl.getTotalLength();
     scrollMap = {};
-    console.time("create");
+    // console.time("create");
     for (let i = 0; i < dashArray; i += step) {
       const { x, y } = pathEl.getPointAtLength(i);
       const floor = Math.floor(y / 10);
       scrollMap[floor] = i;
     }
-    console.timeEnd("create");
+    // console.timeEnd("create");
   };
 
   const renderPath = () => {
@@ -107,7 +107,7 @@
   });
 
   $: halfH = Math.floor($viewport.height / 2);
-  $: mounted && ($viewport.width || $viewport.height), renderPath();
+  // $: mounted && ($viewport.width || $viewport.height), renderPath();
   $: scrollIndex = Math.floor(($scrollY + halfH) / 10);
   $: dashOffset = dashArray - (scrollMap[scrollIndex] || 0);
   // $: tweenPath($scrollY);
