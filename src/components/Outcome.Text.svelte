@@ -9,7 +9,9 @@
 {#each text as { value }}
   <p class="{type}" class:active="{active === i}">
     {#if typeof value === "string"}
-      <span class="block" class:locked="{locked === i}">{@html value}</span>
+      <span class="block" class:locked="{locked === i}"
+        >{@html value.replace(/\\/g, "")}</span
+      >
     {:else}
       {#each value as { chunk, offset, id, side, count, index }}
         <span
@@ -19,7 +21,8 @@
           data-side="{side}"
           data-count="{count}"
           data-index="{index}"
-          style="transform: translateX({offset}px);">{@html chunk}</span
+          style="transform: translateX({offset}px);"
+          >{@html chunk.replace(/\\/g, "")}</span
         >
       {/each}
     {/if}
