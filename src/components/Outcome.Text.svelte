@@ -19,7 +19,7 @@
           data-side="{side}"
           data-count="{count}"
           data-index="{index}"
-          style="transform: translateX({offset}px);">{chunk}</span
+          style="transform: translateX({offset}px);">{@html chunk}</span
         >
       {/each}
     {/if}
@@ -48,5 +48,9 @@
     border-radius: 5px;
     padding: 0.25rem 0.5rem;
     font-family: var(--mono);
+  }
+
+  p.generatation span span {
+    font-family: var(--serif);
   }
 </style>
