@@ -38,7 +38,7 @@
     // console.time("create");
     for (let i = 0; i < dashArray; i += step) {
       const { x, y } = pathEl.getPointAtLength(i);
-      const floor = Math.floor(y / 10);
+      const floor = Math.floor(y / step);
       scrollMap[floor] = i;
     }
     // console.timeEnd("create");
@@ -101,11 +101,13 @@
     setTimeout(createScrollPoints, 17);
   };
 
-  const getYPos = (y) => {
-    console.log(y, yPositions);
+  const getLen = (y) => {
     const match = yPositions.find((d) => y >= d);
     if (!match) return 0;
-    return scrollMap[Math.floor(match / step)];
+    const i = Math.floor(match / step);
+    const len = scrollMap[i];
+    // console.log({ y, match, i, len });
+    return len || 0;
   };
 
   onMount(() => {
@@ -114,14 +116,8 @@
 
   $: halfH = Math.floor($viewport.height / 2);
   // $: mounted && ($viewport.width || $viewport.height), renderPath();
-  $: dashOffset = dashArray - getYPos($scrollY);
-  // $: tweenPath($scrollY);
-  // $: current = scrollMap[$scrollY + halfH];
-  // $: dashOffset = current ? dashArray - current.i : dashArray;
-  // $: if (current) {
-  //   cx = current.x;
-  //   cy = current.y;
-  // }
+  $: pathLen = getLen($scrollY + halfH);
+  $: dashOffset = dashArray - pathLen;
 </script>
 
 <div class="path-container" style="height: {documentH}px;">
@@ -159,7 +155,6 @@
     stroke: var(--fg);
     stroke-linecap: round;
     /* will-change: ; */
-    /* transition: stroke-dashoffset 200ms linear; */
   }
 
   path.bg {
@@ -170,6 +165,7 @@
   path.fg {
     stroke-width: 4px;
     stroke: var(--path-green);
+    transition: stroke-dashoffset 500ms ease-out;
   }
 
   .path-container {
