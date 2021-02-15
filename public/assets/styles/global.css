@@ -118,6 +118,7 @@ button, label {
 
 .prose span.switch {
 	display: inline;
+	cursor: pointer;
 }
 
 .prose span.switch::before {

@@ -44,7 +44,7 @@
       class="outcome {type}"
       class:active="{active === i}"
       class:inactive="{Math.abs(active - i) === 2}"
-      style="transform: rotate({rotate}deg) translateY(3em);"
+      style="transform: rotate({rotate}deg) translateY(4.5em);"
       use:margin="{{ type }}"
     >
       {#if text}

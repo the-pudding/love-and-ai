@@ -20,7 +20,7 @@
   let observed;
   let scrollMap = {};
 
-  export const render = () => setTimeout(renderPath, 100);
+  export const render = () => setTimeout(renderPath, 30);
 
   const progress = () => {
     const visible = blocks.map((node) => node.className.includes("visible"));
