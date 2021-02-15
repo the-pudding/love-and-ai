@@ -19,7 +19,7 @@
   p {
     width: var(--col-width);
     transition: opacity 500ms ease-out;
-    padding: 1em;
+    padding: 1.5em 1em;
     margin: 0 auto;
     line-height: 2;
     opacity: 1;

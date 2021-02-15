@@ -9,7 +9,7 @@
 {#each text as { value }}
   <p class="{type}" class:active="{active === i}">
     {#if typeof value === "string"}
-      <span class="block" class:locked="{locked === i}"
+      <span data-id="true" class="block" class:locked="{locked === i}"
         >{@html value.replace(/\\/g, "")}</span
       >
     {:else}
@@ -31,12 +31,14 @@
 
 <style>
   p {
-    padding: 1em;
+    margin: 0 auto;
+    padding: 1.5em 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
     filter: blur(4px);
     transition: filter 250ms ease-in-out;
+    line-height: 2;
   }
 
   p.active {

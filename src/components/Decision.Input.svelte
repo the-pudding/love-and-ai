@@ -24,7 +24,6 @@
       </div>
     {/each}
   </fieldset>
-  <div class="block locked"></div>
 </div>
 
 <style>
@@ -86,12 +85,5 @@
 
   input[type="radio"]:focus + label {
     box-shadow: 0 0 0 2px var(--focus);
-  }
-
-  .block {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    left: 0;
   }
 </style>

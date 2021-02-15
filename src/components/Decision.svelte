@@ -66,7 +66,7 @@
     on:enter="{() => (visible = true)}"
     on:exit="{() => (visible = false)}"
   >
-    <p class="leadin">{choices[0].leadin}</p>
+    <p class="leadin block locked">{choices[0].leadin}</p>
     <Input data="{data}" bind:active dur="{dur}" />
     <Outcome
       data="{data}"
@@ -97,8 +97,9 @@
     width: 100%;
     max-width: 10em;
     top: 50%;
-    margin: 0;
     left: 50%;
+    margin: 0;
+    padding-top: 1em;
     transform: translate(-50%, -100%);
     font-family: var(--sans);
     font-size: 1.5em;

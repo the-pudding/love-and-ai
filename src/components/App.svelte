@@ -15,7 +15,7 @@
   };
 
   onMount(() => {
-    setTimeout(path.render, 100);
+    setTimeout(path.render, 1000);
   });
 </script>
 

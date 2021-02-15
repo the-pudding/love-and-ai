@@ -20,7 +20,7 @@
   let observed;
   let scrollMap = {};
 
-  export const render = () => renderPath();
+  export const render = () => setTimeout(renderPath, 100);
 
   const progress = () => {
     const visible = blocks.map((node) => node.className.includes("visible"));
@@ -53,12 +53,13 @@
     const withVals = blocks.map((node, i) => {
       const { top, left, right, width } = node.getBoundingClientRect();
       const { id, side, count, index } = node.dataset;
-      const y = $scrollY + top;
+      let y = $scrollY + top;
       const x = left + width / 2;
       if (id) {
         if (!extents[id]) extents[id] = { left: [], right: [] };
         extents[id].left.push(left);
         extents[id].right.push(right);
+        y -= 27;
       }
       return { i, id, x, y, left, right, side, count: +count, index: +index };
     });
@@ -79,7 +80,7 @@
         if (e[d.side][0] === d[d.side]) e.maxed = true;
         if (d.index > 0) {
           x = e.maxed ? e[d.side][0] : e[d.side][1];
-          x += d.side === "left" ? -16 : 16;
+          x += d.side === "left" ? -27 : 27;
         }
       }
       return { i, x, y, side, index };
