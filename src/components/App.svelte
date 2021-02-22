@@ -27,6 +27,17 @@
 
 {#each copy.story as section, i}
   <section id="section-{i}">
+    {#if i === 3}
+      <div class="animation">
+        <div class="left"></div>
+        <div class="right"></div>
+      </div>
+    {/if}
+    {#if i === 5}
+      <div class="animation">
+        <div class="train"></div>
+      </div>
+    {/if}
     <Prose grafs="{section.prose}" />
     <Decision choices="{section.decision}" on:change="{onChange}" />
   </section>
