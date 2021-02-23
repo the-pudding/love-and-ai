@@ -112,6 +112,17 @@ button, label {
 	-webkit-box-decoration-break: clone;
 }
 
+.outcome.reality span.active {
+	background: var(--tan);
+	border: 1px solid var(--off-black);
+	box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
+	border-radius: 5px;
+	padding: 0.25rem 0.5rem;
+	font-family: var(--mono);
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+}
+
 .prose span.active {
 	display: inline;
 }
@@ -130,4 +141,54 @@ button, label {
 	position: relative;
 	top: 0.25rem;
 	left: -0.25rem;
+}
+
+/* animations */
+#section-3 .animation {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+}
+
+#section-3 .left {
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	top: 20%;
+	left: 0;
+	background: url("../images/210219_Talking_Man_Animation_Final.png") 0 0;
+	background-size: cover;
+	animation: moveTalking 2s steps(4) infinite;
+}
+
+#section-3 .right {
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	top: 30%;
+	right: 0;
+	background: url("../images/210219_Talking_Woman_Animation_Final.png") 0 0;
+	background-size: cover;
+	animation: moveTalking 2s steps(4) infinite;
+}
+
+@keyframes moveTalking {
+	100%   {background-position: 0 -1200px;}
+}
+
+#section-5 .animation {
+	width: 100%;
+}
+
+#section-5 .train {
+	width: 600px;
+	height: 450px;
+	margin: 3rem auto;
+	background: url("../images/210219_Train_Animation_Final.png") 0 0;
+	background-size: cover;
+	animation: moveTrain 2s steps(4) infinite;
+}
+
+@keyframes moveTrain {
+	100%   {background-position: 0 -1800px;}
 }
