@@ -7,6 +7,7 @@
   import Prose from "./Prose.svelte";
   import Decision from "./Decision.svelte";
   import Intro from "./Intro.svelte";
+  import Methods from "./Methods.svelte";
   import copy from "../data/copy.json";
 
   let path;
@@ -42,5 +43,7 @@
     <Decision choices="{section.decision}" on:change="{onChange}" />
   </section>
 {/each}
+
+<Methods copy="{copy}" />
 
 <!-- <Footer /> -->

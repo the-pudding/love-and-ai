@@ -54,12 +54,15 @@
   .animation {
     width: 100%;
     height: 450px;
+    margin: 0 0 3rem 0;
   }
 
   .bridge {
     position: absolute;
     width: 100%;
     height: auto;
+    display: flex;
+    justify-content: center;
   }
 
   .background {
