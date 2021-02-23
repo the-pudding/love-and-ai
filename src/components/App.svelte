@@ -7,6 +7,7 @@
   import Prose from "./Prose.svelte";
   import Decision from "./Decision.svelte";
   import Intro from "./Intro.svelte";
+  import OpeningAnimation from "./OpeningAnimation.svelte";
   import Methods from "./Methods.svelte";
   import copy from "../data/copy.json";
 
@@ -22,6 +23,7 @@
 
 <Meta copy="{copy}" />
 <Header />
+<OpeningAnimation />
 <Intro />
 
 <Path selector=".block.locked" bind:this="{path}" />
@@ -34,13 +36,16 @@
         <div class="right"></div>
       </div>
     {/if}
-    {#if i === 5}
+    {#if i === 4}
       <div class="animation">
         <div class="train"></div>
       </div>
     {/if}
     <Prose grafs="{section.prose}" />
     <Decision choices="{section.decision}" on:change="{onChange}" />
+    <div class="divider">
+      <div class="line"></div>
+    </div>
   </section>
 {/each}
 

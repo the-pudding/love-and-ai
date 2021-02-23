@@ -1,12 +1,5 @@
 <section id="intro">
-  <div class="animation">
-    <div class="bridge">
-      <div class="background"></div>
-      <div class="middle"></div>
-      <div class="foreground"></div>
-    </div>
-  </div>
-  <h1>A <span>model</span> break-up</h1>
+  <h1><span>A model breakup</span></h1>
   <h2>Sometimes all your story needs is a better ending.</h2>
   <div class="byline">
     <p>
@@ -29,14 +22,30 @@
   h1 {
     font-family: var(--headline);
     font-size: 5rem;
+    margin: 1rem 0 3rem 0;
   }
 
   h1 span {
     border: 1px solid var(--fg);
     box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
     border-radius: 5px;
-    padding: 0.25rem 0.5rem;
+    padding: 0.75rem 1.75rem 0.75rem 1rem;
     font-family: var(--mono);
+  }
+
+  h1 span::before {
+    content: url("../assets/images/repeat-large.svg");
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    transform: scale(0.75);
+    position: relative;
+    top: 1.25rem;
+    left: -0.5rem;
+  }
+
+  h1 span:hover {
+	  background: rgba(251, 231, 201, 0.25);
   }
 
   .byline p {
@@ -49,35 +58,5 @@
     border-radius: 5px;
     padding: 0.25rem 0.5rem;
     font-family: var(--mono);
-  }
-
-  .animation {
-    width: 100%;
-    height: 450px;
-    margin: 0 0 3rem 0;
-  }
-
-  .bridge {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-  }
-
-  .background {
-    background: url("../assets/images/210219_River_Animation_Final_BG.png") 0 0;
-    position: absolute;
-    width: 600px;
-    height: 450px;
-    background-size: cover;
-  }
-
-  .foreground {
-    background: url("../assets/images/210219_River_Animation_Final_FG.png") 0 0;
-    position: absolute;
-    width: 600px;
-    height: 450px;
-    background-size: cover;
   }
 </style>

@@ -41,7 +41,7 @@
     position: relative;
     border-radius: 50%;
     border-color: var(--fg);
-    /* background-color: var(--tan-mid); */
+    background: rgba(251, 231, 201, 0.25);
   }
 
   .choice {
@@ -80,10 +80,10 @@
   }
 
   input[type="radio"]:checked + label {
-    box-shadow: 0 0 0 2px var(--focus);
+    box-shadow: 0 0 0 3px var(--light-blue);
   }
 
   input[type="radio"]:focus + label {
-    box-shadow: 0 0 0 2px var(--focus);
+    box-shadow: 0 0 0 3px var(--light-blue);
   }
 </style>

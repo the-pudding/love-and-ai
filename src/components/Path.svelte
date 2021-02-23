@@ -149,6 +149,7 @@
 
   circle {
     fill: gray;
+    display: none;
   }
 
   path {
@@ -165,7 +166,7 @@
 
   path.fg {
     stroke-width: 4px;
-    stroke: var(--path-green);
+    stroke: var(--path-orange);
     transition: stroke-dashoffset 500ms ease-out;
   }
 

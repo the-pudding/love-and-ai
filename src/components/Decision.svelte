@@ -104,5 +104,6 @@
     font-family: var(--sans);
     font-size: 1.5em;
     line-height: 1.2;
+    z-index: 1;
   }
 </style>
