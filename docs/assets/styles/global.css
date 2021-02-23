@@ -25,6 +25,8 @@
 	--tan-mid: #fff5e7;
 	--tan-dark: #FBE7C9;
 	--path-green: #5AA471;
+	--path-orange: #e76e1f;
+	--light-blue: #a8d1c7;
 
 	--love-peach-light: #FAE8DD;
 
@@ -43,7 +45,7 @@
   --background-alt: var(--off-white);
   --selection: var(--gray);
   --text-main: var(--off-black);
-  --links: var(--purple);
+  --links: var(--off-black);
   --focus: var(--green);
   --border: var(--gray-light);
   --animation-duration: 0.1s;
@@ -58,6 +60,10 @@
 
 	--col-width: 28em;
 	--wheel-width: 22em;
+}
+
+body {
+	overflow-x: hidden;
 }
 
 .skip-to-main {
@@ -100,6 +106,22 @@ button, label {
 	padding: 0.5em;
 }
 
+.divider {
+	height: 8rem;
+	width: 100%;
+}
+
+.line {
+	border-bottom: 1px solid var(--off-black);
+	max-width: 10rem;
+	margin: 0 auto;
+	padding-bottom: 4rem;
+}
+
+#section-3 .divider {
+	display: none;
+}
+
 .prose span {
 	background: var(--tan);
 	display: none;
@@ -112,7 +134,7 @@ button, label {
 	-webkit-box-decoration-break: clone;
 }
 
-.outcome.reality span.active {
+.outcome.reality span.active, #note span {
 	background: var(--tan);
 	border: 1px solid var(--off-black);
 	box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
@@ -121,6 +143,10 @@ button, label {
 	font-family: var(--mono);
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
+}
+
+#note span {
+	font-size: 0.9em;
 }
 
 .prose span.active {
@@ -132,6 +158,10 @@ button, label {
 	cursor: pointer;
 }
 
+.prose span.switch:hover {
+	background: rgba(251, 231, 201, 0.25);
+}
+
 .prose span.switch::before {
 	content: url("../images/repeat.svg");
 	width: 24px;
@@ -139,7 +169,7 @@ button, label {
 	display: inline-block;
 	transform: scale(0.75);
 	position: relative;
-	top: 0.25rem;
+	top: 0.3rem;
 	left: -0.25rem;
 }
 
@@ -176,11 +206,13 @@ button, label {
 	100%   {background-position: 0 -1200px;}
 }
 
-#section-5 .animation {
+#section-4 .animation {
 	width: 100%;
+	background: var(--tan);
+	padding-top: 1rem;
 }
 
-#section-5 .train {
+#section-4 .train {
 	width: 600px;
 	height: 450px;
 	margin: 3rem auto;
