@@ -134,7 +134,7 @@ button, label {
 	-webkit-box-decoration-break: clone;
 }
 
-.outcome.reality span.active, #note span, .outcome.reality span.visible span.switch {
+#note span {
 	background: var(--tan);
 	border: 1px solid var(--off-black);
 	box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
@@ -149,20 +149,39 @@ button, label {
 	font-size: 0.9em;
 }
 
-.prose span.active, .outcome.reality span.visible span.active {
+.prose span.active {
 	display: inline;
 }
 
-.prose span.switch, .outcome.reality span.visible span.switch  {
+.prose span.directions {
+	font-family: var(--sans);
+	font-size: 0.9em;
+	padding: 0;
+	background: none;
+	border: none;
+	box-shadow: none;
+	display: inline-block;
+	color: var(--gray);
+	line-height: 1.5;
+}
+
+.prose span.directions span.active, .prose span.directions span.switch {
+	font-size: 0.9rem;
+	color: var(--off-black);
+	padding: 0.125rem 0.35rem;
+	pointer-events: none;
+}
+
+.prose span.switch  {
 	display: inline;
 	cursor: pointer;
 }
 
-.prose span.switch:hover, .outcome.reality span.visible span.switch:hover {
+.prose span.switch:hover {
 	background: rgba(251, 231, 201, 0.25);
 }
 
-.prose span.switch::before, .outcome.reality span.visible span.switch::before {
+.prose span.switch::before {
 	content: url("../images/repeat.svg");
 	width: 24px;
 	height: 24px;
@@ -173,34 +192,39 @@ button, label {
 	left: -0.25rem;
 }
 
-.override {
-	border: none;
-	font-family: var(--serif);
+.prose span.directions span.switch::before {
+	transform: scale(0.5);
+	width: 16px;
+	height: 16px;
+	top: 0.5rem;
 }
 
 /* animations */
-#section-3 .animation {
+.animation {
+	pointer-events: none;
+}
+#section-4 .animation {
 	position: absolute;
 	width: 100%;
 	height: 100vh;
 }
 
-#section-3 .left {
+#section-4 .left {
 	width: 300px;
 	height: 300px;
 	position: absolute;
-	top: 20%;
+	bottom: 20%;
 	left: 0;
 	background: url("../images/210219_Talking_Man_Animation_Final.png") 0 0;
 	background-size: cover;
 	animation: moveTalking 2s steps(4) infinite;
 }
 
-#section-3 .right {
+#section-4 .right {
 	width: 300px;
 	height: 300px;
 	position: absolute;
-	top: 30%;
+	bottom: 30%;
 	right: 0;
 	background: url("../images/210219_Talking_Woman_Animation_Final.png") 0 0;
 	background-size: cover;
@@ -211,12 +235,12 @@ button, label {
 	100%   {background-position: 0 -1200px;}
 }
 
-#section-4 .animation {
+#section-9 .animation {
 	width: 100%;
 	padding-top: 1rem;
 }
 
-#section-4 .train {
+#section-9 .train {
 	width: 600px;
 	height: 450px;
 	margin: 3rem auto;
@@ -227,4 +251,11 @@ button, label {
 
 @keyframes moveTrain {
 	100%   {background-position: 0 -1800px;}
+}
+
+.stop svg {
+	width: 3rem !important;
+	height: 3rem !important;
+	stroke: var(--tan);
+	fill: var(--path-orange);
 }
