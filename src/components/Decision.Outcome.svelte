@@ -2,6 +2,7 @@
   import { createEventDispatcher, tick, onMount } from "svelte";
   import Text from "./Outcome.Text.svelte";
   import css from "../actions/css.js";
+  import Icon from "./helpers/Icon.svelte";
 
   export let data = [];
   export let active;
@@ -39,9 +40,9 @@
   on:transitionend|self="{onTransitionEnd}"
   use:css="{{ dur }}"
 >
-  {#each data as { text, type, rotate }, i}
+  {#each data as { text, type, rotate, stop }, i}
     <div
-      class="outcome {type}"
+      class="outcome {type} stop-{stop}"
       class:active="{active === i}"
       class:inactive="{Math.abs(active - i) === 2}"
       style="transform: rotate({rotate}deg) translateY(4.5em);"
@@ -51,10 +52,16 @@
         <Text
           text="{text}"
           type="{type}"
+          stop="{stop}"
           locked="{locked}"
           i="{i}"
           active="{active}"
         />
+      {/if}
+      {#if stop === "yes"} 
+        <div class="stop">
+          <Icon name="x-octagon" />
+        </div>
       {/if}
     </div>
   {/each}
@@ -87,5 +94,11 @@
 
   .outcome.inactive {
     opacity: 0;
+  }
+
+  .stop {
+    width: 3rem;
+    margin: 0 auto;
+    height: 3rem;
   }
 </style>
