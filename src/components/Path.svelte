@@ -6,6 +6,7 @@
 
   export let selector;
 
+  const OFFSET = 27;
   const step = 1;
 
   let mounted = false;
@@ -59,7 +60,7 @@
         if (!extents[id]) extents[id] = { left: [], right: [] };
         extents[id].left.push(left);
         extents[id].right.push(right);
-        y -= 27;
+        y -= OFFSET;
       }
       return { i, id, x, y, left, right, side, count: +count, index: +index };
     });
@@ -70,19 +71,17 @@
     });
 
     points = withVals.map((d) => {
-      let x = d.x;
-      let y = d.y;
-      let i = d.i;
-      let side = d.side;
-      let index = d.index;
-      if (d.id && d.count > 3) {
-        const e = extents[d.id];
-        if (e[d.side][0] === d[d.side]) e.maxed = true;
-        if (d.index > 0) {
-          x = e.maxed ? e[d.side][0] : e[d.side][1];
-          x += d.side === "left" ? -27 : 27;
+      let { id, x, y, i, side, index, count } = d;
+
+      if (id && count > 3) {
+        const e = extents[id];
+        if (e[side][0] === d[side]) e.maxed = true;
+        if (index > 0) {
+          x = e.maxed ? e[side][0] : e[side][1];
+          x += side === "left" ? -OFFSET : OFFSET;
         }
       }
+      // if (index === count - 1) y += OFFSET;
       return { i, x, y, side, index };
     });
 

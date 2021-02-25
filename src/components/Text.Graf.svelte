@@ -54,7 +54,7 @@
     border: 1px solid var(--off-black);
     box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
     border-radius: 5px;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5em 1em;
     font-family: var(--mono);
   }
 </style>
