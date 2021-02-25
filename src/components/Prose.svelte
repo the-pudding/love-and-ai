@@ -5,7 +5,7 @@
 
 <div class="prose">
   {#each grafs as { value }}
-    <Graf text="{value}" />
+    <Graf text="{value}" on:change />
   {/each}
 </div>
 

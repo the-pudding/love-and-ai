@@ -24,7 +24,7 @@
 <Meta copy="{copy}" />
 <Header />
 <OpeningAnimation />
-<Intro />
+<Intro copy="{copy}" />
 
 <Path selector=".block.locked" bind:this="{path}" />
 
@@ -41,12 +41,12 @@
         <div class="train"></div>
       </div>
     {/if}
-    <Prose grafs="{section.prose}" />
+    <Prose grafs="{section.prose}" on:change="{onChange}" />
     <Decision choices="{section.decision}" on:change="{onChange}" />
-    {#if i === 1 || i === 2 || i === 4 || i === 8  || i === 9}
-    <div class="divider">
-      <div class="line"></div>
-    </div>
+    {#if i === 1 || i === 2 || i === 4 || i === 8 || i === 9}
+      <div class="divider">
+        <div class="line"></div>
+      </div>
     {/if}
   </section>
 {/each}
