@@ -16,10 +16,6 @@ export default function switcher(node, params) {
     );
   });
   return {
-    destroy() {
-			spans.forEach((el, i) => {
-    		el.removeEventListener("click");
-			});
-		}
+    destroy() {}
   };
 }

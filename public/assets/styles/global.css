@@ -122,7 +122,7 @@ button, label {
 	display: none;
 }
 
-.prose span, .outcome.reality span.visible span {
+.prose span, .outcome.reality span span {
 	background: var(--tan);
 	display: none;
 	border: 1px solid var(--off-black);
@@ -133,6 +133,15 @@ button, label {
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
 }
+
+.outcome.generation span.generation.flip {
+	border: none;
+	box-shadow: none;
+	font-family: var(--serif);
+	background: none;
+	border-radius: 0;
+}
+
 
 
 #note span {

@@ -23,6 +23,7 @@
     <span
       class="block chunk {type}"
       class:locked="{locked === i}"
+      class:flip="{chunk.includes('=flip')}"
       data-id="{id}"
       data-side="{side}"
       data-count="{count}"
