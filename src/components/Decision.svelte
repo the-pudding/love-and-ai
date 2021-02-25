@@ -12,19 +12,24 @@
     const total = [].concat(...grafs).length;
 
     let i = 0;
+    let prevSide = null;
+
     const output = grafs.map((graf) => {
       const count = graf.length;
       const id = graf[0].replace(/\W/g, "").slice(0, 20);
       const value = [];
+
       graf.forEach((chunk, index) => {
         const s = Math.sin(((i + 0.0001) / total) * Math.PI * 2) * -1;
         const side = s < 0 ? "left" : "right";
         const jitter = 15 - Math.random() * 30;
-        const offset =
-          index === 0 || count < 4 ? 0 : Math.round(s * 50 + jitter);
-        value.push({ chunk, offset, id, side, count, index });
+
+        const offset = i === 0 ? 0 : Math.round(s * 50 + jitter);
+        value.push({ chunk, offset, id, side, count, index: i, prevSide });
         i += 1;
+        prevSide = side;
       });
+
       return { value };
     });
 

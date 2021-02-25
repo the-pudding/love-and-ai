@@ -1,6 +1,15 @@
+<script>
+  import switcher from "../actions/switcher.js";
+  export let copy;
+</script>
+
 <section id="intro">
-  <h1><span>A model breakup</span></h1>
-  <h2>Sometimes all your story needs is a better ending.</h2>
+  <h1 class="hed" use:switcher>
+    {#each copy.titles as title, i}
+      <span role="button" class:switch="{i === 0}">{title}</span>
+    {/each}
+  </h1>
+  <p class="subhed">{copy.description}</p>
   <div class="byline">
     <p>
       Authored by <a href="https://pudding.cool/author/pamela-mishkin/"
@@ -16,13 +25,14 @@
     margin: 0 auto;
     max-width: 60em;
     text-align: center;
-    padding: 0 0 4rem 0;
+    padding: 0 0 4em 0;
   }
 
   h1 {
     font-family: var(--headline);
-    font-size: 5rem;
-    margin: 1rem 0 3rem 0;
+    font-size: 4em;
+    margin: 1em 0;
+    user-select: none;
   }
 
   h1 span {
@@ -33,19 +43,13 @@
     font-family: var(--mono);
   }
 
-  h1 span::before {
-    content: url("../assets/images/repeat-large.svg");
-    width: 100px;
-    height: 100px;
-    display: inline-block;
-    transform: scale(0.75);
-    position: relative;
-    top: 1.25rem;
-    left: -0.5rem;
+  h1 span:hover {
+    background: rgba(251, 231, 201, 0.25);
   }
 
-  h1 span:hover {
-	  background: rgba(251, 231, 201, 0.25);
+  p.subhed {
+    font-size: 1.5em;
+    line-height: 1.2;
   }
 
   .byline p {

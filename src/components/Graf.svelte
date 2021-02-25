@@ -1,35 +1,18 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import inView from "../actions/inView.js";
+  import switcher from "../actions/switcher.js";
   import { bottomOffset } from "../stores/global.js";
   export let text;
   let visible;
 
-  function switcher(node, params) {
-    const spans = node.querySelectorAll("span:not(.active)");
-    const last = spans.length - 1;
-    spans.forEach((el, i) => {
-      el.setAttribute("role", "button");
-      el.addEventListener(
-        "click",
-        () => {
-          const next = i === last ? 0 : i + 1;
-          const sibling = spans[next];
-          sibling.classList.add("switch");
-          el.classList.remove("switch");
-        },
-        false
-      );
-    });
-    return {
-      destroy() {},
-    };
-  }
+  const dispatch = createEventDispatcher();
 </script>
 
 <p
   class="block locked"
   class:visible
-  use:switcher
+  use:switcher="{{ cb: () => dispatch('change') }}"
   use:inView="{{ bottom: $bottomOffset }}"
   on:enter="{() => (visible = true)}"
   on:exit="{() => (visible = false)}"
