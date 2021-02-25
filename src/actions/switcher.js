@@ -10,7 +10,7 @@ export default function switcher(node, params) {
         const sibling = spans[next];
         sibling.classList.add("switch");
         el.classList.remove("switch");
-				if (params.cb) cb();
+				if (params.cb) params.cb();
       },
       false
     );

@@ -12,12 +12,14 @@
   import copy from "../data/copy.json";
 
   let path;
+  let mounted;
   const onChange = () => {
-    path.render();
+    if (mounted) path.render(mounted);
   };
 
   onMount(() => {
-    setTimeout(path.render, 1000);
+    mounted = true;
+    setTimeout(path.render, 30);
   });
 </script>
 

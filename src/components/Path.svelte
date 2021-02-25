@@ -16,21 +16,12 @@
   let pathD = "";
   let pathEl = null;
   let dashArray = 0;
-  let end = 0;
   let blocks = null;
-  let observed;
   let scrollMap = {};
+  let animate;
 
-  export const render = () => setTimeout(renderPath, 30);
-
-  const progress = () => {
-    const visible = blocks.map((node) => node.className.includes("visible"));
-    end = visible.lastIndexOf(true);
-  };
-
-  const onMutation = (mutations, observer) => {
-    const classChange = !!mutations.find((m) => m.attributeName === "class");
-    if (classChange) progress();
+  export const render = (change) => {
+    setTimeout(renderPath, 30);
   };
 
   const createScrollPoints = () => {
@@ -90,14 +81,6 @@
 
     pathD = makeLine(points);
 
-    if (!observed) {
-      observed = true;
-      blocks.map((node) => {
-        const o = new MutationObserver(onMutation);
-        o.observe(node, { attributes: true });
-      });
-    }
-
     setTimeout(createScrollPoints, 17);
   };
 
@@ -114,10 +97,11 @@
     mounted = true;
   });
 
-  $: halfH = Math.floor($viewport.height / 2);
-  // $: mounted && ($viewport.width || $viewport.height), renderPath();
-  $: pathLen = getLen($scrollY + halfH);
+  $: offsetH = Math.floor($viewport.height * 0.5);
+  $: pathLen = getLen($scrollY + offsetH);
   $: dashOffset = dashArray - pathLen;
+  $: pathLen, (animate = true);
+  $: dashArray, (animate = false);
 </script>
 
 <div class="path-container" style="height: {documentH}px;">
@@ -126,6 +110,7 @@
 
     <path
       class="fg"
+      class:animate
       bind:this="{pathEl}"
       d="{pathD}"
       stroke-dasharray="{dashArray}"
@@ -166,6 +151,9 @@
   path.fg {
     stroke-width: 4px;
     stroke: var(--path-orange);
+  }
+
+  path.fg.animate {
     transition: stroke-dashoffset 500ms ease-out;
   }
 

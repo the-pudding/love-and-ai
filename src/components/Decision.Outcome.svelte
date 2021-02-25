@@ -58,7 +58,7 @@
           active="{active}"
         />
       {/if}
-      {#if stop === "yes"} 
+      {#if stop === "yes"}
         <div class="stop">
           <Icon name="x-octagon" />
         </div>
@@ -98,7 +98,8 @@
 
   .stop {
     width: 3rem;
-    margin: 0 auto;
     height: 3rem;
+    margin: 0 auto;
+    opacity: 0;
   }
 </style>

@@ -13,21 +13,21 @@
   class="block locked"
   class:visible
   use:switcher="{{ cb: () => dispatch('change') }}"
-  use:inView="{{ bottom: $bottomOffset }}"
-  on:enter="{() => (visible = true)}"
-  on:exit="{() => (visible = false)}"
 >
   {@html text}
 </p>
 
+<!-- use:inView="{{ bottom: $bottomOffset }}"
+  on:enter="{() => (visible = true)}"
+  on:exit="{() => (visible = false)}" -->
 <style>
   p {
     width: var(--col-width);
-    transition: opacity 500ms ease-in-out;
+    transition: opacity 250ms ease-in;
     padding: 1.5em 1em;
     margin: 0 auto;
     line-height: 2;
-    opacity: 0;
+    opacity: 1;
   }
 
   p.visible {

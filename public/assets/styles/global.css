@@ -179,7 +179,7 @@ button, label {
 }
 
 .prose span.switch:hover {
-	background: rgba(251, 231, 201, 0.25);
+	background: rgb(251, 231, 201);
 }
 
 .prose span.switch::before {
@@ -232,6 +232,7 @@ h1 span {
 .animation {
 	pointer-events: none;
 }
+
 #section-4 .animation {
 	position: absolute;
 	width: 100%;

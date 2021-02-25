@@ -13,12 +13,11 @@
     data-id="true"
     class="block {type}"
     class:locked="{locked === i}"
-    class:visible="{visible[0]}"
-    use:inView="{{ bottom: $bottomOffset }}"
-    on:enter="{() => (visible[0] = true)}"
-    on:exit="{() => (visible[0] = false)}"
-    >{@html value.replace(/\\/g, "")}</span
+    class:visible="{visible[0]}">{@html value.replace(/\\/g, "")}</span
   >
+  <!-- use:inView="{{ bottom: $bottomOffset }}"
+    on:enter="{() => (visible[0] = true)}"
+    on:exit="{() => (visible[0] = false)}" -->
 {:else}
   {#each value as { chunk, offset, id, side, count, index }, x}
     <span
@@ -29,18 +28,17 @@
       data-count="{count}"
       data-index="{index}"
       style="transform: translateX({offset}px);"
-      class:visible="{visible[x]}"
-      use:inView="{{ bottom: $bottomOffset }}"
-      on:enter="{() => (visible[x] = true)}"
-      on:exit="{() => (visible[x] = false)}"
-      >{@html chunk.replace(/\\/g, "")}</span
+      class:visible="{visible[x]}">{@html chunk.replace(/\\/g, "")}</span
     >
+    <!-- use:inView="{{ bottom: $bottomOffset }}"
+      on:enter="{() => (visible[x] = true)}"
+      on:exit="{() => (visible[x] = false)}" -->
   {/each}
 {/if}
 
 <style>
   span {
-    opacity: 0;
+    opacity: 1;
     transition: all 500ms ease-in-out;
   }
 

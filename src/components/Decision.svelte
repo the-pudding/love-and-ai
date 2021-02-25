@@ -63,14 +63,10 @@
 </script>
 
 {#if choices.length}
-  <div
-    class="decision"
-    style="margin-bottom: {marginBottom}px;"
-    class:visible
-    use:inView="{{ bottom: $bottomOffset }}"
+  <div class="decision" style="margin-bottom: {marginBottom}px;" class:visible>
+    <!-- use:inView="{{ bottom: $bottomOffset }}"
     on:enter="{() => (visible = true)}"
-    on:exit="{() => (visible = false)}"
-  >
+    on:exit="{() => (visible = false)}" -->
     <p class="leadin block locked">{choices[0].leadin}</p>
     <Input data="{data}" bind:active dur="{dur}" />
     <Outcome
