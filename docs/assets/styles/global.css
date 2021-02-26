@@ -24,6 +24,7 @@
 	--tan: #fffaf3;
 	--tan-mid: #fff5e7;
 	--tan-dark: #FBE7C9;
+	--tan-black: #7A4700;
 	--path-green: #5AA471;
 	--path-orange: #e76e1f;
 	--light-blue: #a8d1c7;
@@ -162,7 +163,7 @@ span.directions {
 	border: none;
 	box-shadow: none;
 	display: inline-block;
-	color: var(--gray);
+	color: var(--gray-dark);
 	line-height: 1.5;
 }
 
