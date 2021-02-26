@@ -100,6 +100,6 @@
     width: 3rem;
     height: 3rem;
     margin: 0 auto;
-    opacity: 0;
+    opacity: 1;
   }
 </style>

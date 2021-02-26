@@ -32,23 +32,13 @@
 
 {#each copy.story as section, i}
   <section id="section-{i}">
-    {#if i === 4}
-      <div class="animation">
-        <div class="left"></div>
-        <div class="right"></div>
-      </div>
-    {/if}
-    {#if i === 9}
-      <div class="animation">
-        <div class="train"></div>
-      </div>
+    {#if section.animation}
+      <div class="animation">{@html section.animation}</div>
     {/if}
     <Prose grafs="{section.prose}" on:change="{onChange}" />
     <Decision choices="{section.decision}" on:change="{onChange}" />
-    {#if i === 1 || i === 2 || i === 4 || i === 8 || i === 9}
-      <div class="divider">
-        <div class="line"></div>
-      </div>
+    {#if section.divider === "true"}
+      <hr />
     {/if}
   </section>
 {/each}
