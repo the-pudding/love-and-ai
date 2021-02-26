@@ -10,20 +10,42 @@
   export let dur = "500ms";
 
   const dispatch = createEventDispatcher();
-  let locked = 1;
-
   const margins = [];
+
+  let locked = 1;
+  let el;
 
   $: current = data[active];
   $: r = current.rotate * -1;
   $: active, (marginBottom = margins[active]);
+  $: hasStop = current.stop === "yes";
 
   const margin = (node, { type }) => {
     margins.push(node.offsetHeight);
   };
 
+  const toggleBelow = () => {
+    const section = el.parentNode.parentNode;
+    const id = section.getAttribute("id");
+    let passed;
+
+    const toHide = Array.prototype.forEach.call(
+      section.parentNode.children,
+      (child) => {
+        const same = child === section;
+        const classes = child.className;
+        const hide = !same && passed && !classes.includes("spacer");
+        if (child === section) passed = true;
+
+        if (hasStop && hide) child.classList.remove("unstopped");
+        else child.classList.add("unstopped");
+      }
+    );
+  };
+
   const onTransitionEnd = async (e) => {
     locked = active;
+    toggleBelow();
     await tick();
     dispatch("change");
   };
@@ -35,6 +57,7 @@
 </script>
 
 <div
+  bind:this="{el}"
   class="decision-outcome"
   style="transform: rotate({r}deg);"
   on:transitionend|self="{onTransitionEnd}"
@@ -60,7 +83,15 @@
       {/if}
       {#if stop === "yes"}
         <div class="stop">
-          <Icon name="x-octagon" />
+          <p class="block" class:locked="{locked === i}">
+            <Icon name="x-octagon" width="3rem" height="3rem" />
+          </p>
+          <p>
+            <span class="directions"
+              >You’ve chosen a path where the story ends. Select another path to
+              continue.</span
+            >
+          </p>
         </div>
       {/if}
     </div>
@@ -97,9 +128,13 @@
   }
 
   .stop {
-    width: 3rem;
-    height: 3rem;
     margin: 0 auto;
     opacity: 1;
+    max-width: 20em;
+  }
+
+  .stop p {
+    margin: 0;
+    text-align: center;
   }
 </style>

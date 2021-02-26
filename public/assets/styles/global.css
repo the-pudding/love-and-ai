@@ -154,7 +154,7 @@ hr {
 	display: inline;
 }
 
-.prose span.directions {
+span.directions {
 	font-family: var(--sans);
 	font-size: 0.9em;
 	padding: 0;
@@ -228,18 +228,19 @@ h1 span {
 	cursor: pointer;
 }
 
+.stop svg {
+	stroke: var(--tan);
+	fill: var(--path-orange);
+}
+
 /* animations */
 .animation {
 	pointer-events: none;
 }
 
-#section-4 .animation {
-	position: absolute;
-	width: 100%;
-	height: 100vh;
-}
 
-#section-4 .left {
+
+.animation .left {
 	width: 300px;
 	height: 300px;
 	position: absolute;
@@ -250,7 +251,7 @@ h1 span {
 	animation: moveTalking 2s steps(4) infinite;
 }
 
-#section-4 .right {
+.animation .right {
 	width: 300px;
 	height: 300px;
 	position: absolute;
@@ -265,12 +266,8 @@ h1 span {
 	100%   {background-position: 0 -1200px;}
 }
 
-#section-9 .animation {
-	width: 100%;
-	padding-top: 1rem;
-}
 
-#section-9 .train {
+.animation .train {
 	width: 600px;
 	height: 450px;
 	margin: 3rem auto;
@@ -281,11 +278,4 @@ h1 span {
 
 @keyframes moveTrain {
 	100%   {background-position: 0 -1800px;}
-}
-
-.stop svg {
-	width: 3rem !important;
-	height: 3rem !important;
-	stroke: var(--tan);
-	fill: var(--path-orange);
 }

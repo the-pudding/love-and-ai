@@ -28,10 +28,10 @@
 <OpeningAnimation />
 <Intro copy="{copy}" />
 
-<Path selector=".block.locked" bind:this="{path}" />
+<Path selector=".unstopped .block.locked" bind:this="{path}" />
 
 {#each copy.story as section, i}
-  <section id="section-{i}">
+  <section id="section-{i}" class="unstopped">
     {#if section.animation}
       <div class="animation">{@html section.animation}</div>
     {/if}
@@ -45,4 +45,20 @@
 
 <Methods copy="{copy}" />
 
+<!-- for when we hit a stop so it doesn't jump -->
+<div style="padding-top:50vh" class="spacer"></div>
+
 <!-- <Footer /> -->
+<style>
+  section {
+    display: none;
+  }
+  .unstopped {
+    display: block;
+  }
+  .animation {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+  }
+</style>
