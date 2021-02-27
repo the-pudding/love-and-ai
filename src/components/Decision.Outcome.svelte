@@ -127,10 +127,15 @@
     opacity: 0;
   }
 
-  .stop {
+  .outcome.inactive .stop, .outcome .stop {
     margin: 0 auto;
-    opacity: 1;
+    opacity: 0;
+    transition: opacity 500ms ease-out;
     max-width: 20em;
+  }
+
+  .outcome.active .stop {
+    opacity: 1;
   }
 
   .stop p {

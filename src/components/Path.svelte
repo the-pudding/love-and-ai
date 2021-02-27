@@ -145,12 +145,12 @@
 
   path.bg {
     stroke: var(--tan-dark);
-    stroke-width: 2px;
+    stroke-width: 1px;
   }
 
   path.fg {
-    stroke-width: 4px;
-    stroke: var(--path-orange);
+    stroke-width: 3px;
+    stroke: var(--light-blue);
   }
 
   path.fg.animate {

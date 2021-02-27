@@ -41,7 +41,7 @@
   }
 
   .middle {
-    background: url("../assets/images/210219_River_Animation_Final_Walking.png")
+    background: url("../assets/images/walking.gif")
       0 0;
     position: absolute;
     top: 120px;
@@ -50,14 +50,7 @@
     width: 200px;
     height: 225px;
     background-size: cover;
-    animation: moveWalking 1.25s steps(8) infinite,
-      moveWalkingX 30s linear infinite;
-  }
-
-  @keyframes moveWalking {
-    100% {
-      background-position: 0 -1800px;
-    }
+    animation: moveWalkingX 30s linear infinite;
   }
 
   @keyframes moveWalkingX {

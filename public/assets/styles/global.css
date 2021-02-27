@@ -27,7 +27,7 @@
 	--tan-black: #7A4700;
 	--path-green: #5AA471;
 	--path-orange: #e76e1f;
-	--light-blue: #a8d1c7;
+	--light-blue: #DBE5E3;
 
 	--love-peach-light: #FAE8DD;
 
@@ -167,11 +167,19 @@ span.directions {
 	line-height: 1.5;
 }
 
-.prose span.directions span.active, .prose span.directions span.switch {
+.prose span.directions span.active, .prose span.directions span.switch, .prose span.directions span.option {
 	font-size: 0.9rem;
 	color: var(--off-black);
 	padding: 0.125rem 0.35rem;
 	pointer-events: none;
+}
+
+.prose span.directions span.option {
+	display: inline;
+	color: var(--white);
+	background: var(--off-black);
+	text-shadow: none;
+	font-family: var(--sans);
 }
 
 .prose span.switch  {
@@ -180,7 +188,7 @@ span.directions {
 }
 
 .prose span.switch:hover {
-	background: rgb(251, 231, 201);
+	background: var(--tan-mid);
 }
 
 .prose span.switch::before {
@@ -239,7 +247,10 @@ h1 span {
 	pointer-events: none;
 }
 
-
+#section-9 .animation {
+	position: relative;
+	height: auto;
+}
 
 .animation .left {
 	width: 300px;
@@ -247,9 +258,8 @@ h1 span {
 	position: absolute;
 	bottom: 20%;
 	left: 0;
-	background: url("../images/210219_Talking_Man_Animation_Final.png") 0 0;
+	background: url("../images/210219_Talking_Man_Animation_Final.gif") 0 0;
 	background-size: cover;
-	animation: moveTalking 2s steps(4) infinite;
 }
 
 .animation .right {
@@ -258,13 +268,8 @@ h1 span {
 	position: absolute;
 	bottom: 30%;
 	right: 0;
-	background: url("../images/210219_Talking_Woman_Animation_Final.png") 0 0;
+	background: url("../images/210219_Talking_Woman_Animation_Final.gif") 0 0;
 	background-size: cover;
-	animation: moveTalking 2s steps(4) infinite;
-}
-
-@keyframes moveTalking {
-	100%   {background-position: 0 -1200px;}
 }
 
 
@@ -272,11 +277,6 @@ h1 span {
 	width: 600px;
 	height: 450px;
 	margin: 3rem auto;
-	background: url("../images/210219_Train_Animation_Final.png") 0 0;
+	background: url("../images/210219_Train_Animation_Final.gif") 0 0;
 	background-size: cover;
-	animation: moveTrain 2s steps(4) infinite;
-}
-
-@keyframes moveTrain {
-	100%   {background-position: 0 -1800px;}
 }

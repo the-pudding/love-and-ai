@@ -56,8 +56,9 @@
   .unstopped {
     display: block;
   }
+
   .animation {
-    position: absolute;
+	  position: absolute;
     width: 100%;
     height: 100vh;
   }
