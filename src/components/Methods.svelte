@@ -19,7 +19,6 @@
 <style>
   #method,
   #note {
-    display: none;
     max-width: 30em;
     margin: 2rem auto 0 auto;
     padding: 0em 2em;

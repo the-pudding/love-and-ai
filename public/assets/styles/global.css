@@ -141,7 +141,7 @@ hr {
 	border: 1px solid var(--off-black);
 	box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
 	border-radius: 5px;
-	padding: 0.25rem 0.5rem;
+	padding: 0.125rem 0.25rem;
 	font-family: var(--mono);
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
@@ -153,6 +153,10 @@ hr {
 
 .prose span.active {
 	display: inline;
+}
+
+.prose a:hover, .outcome a:hover {
+	color: var(--path-orange);
 }
 
 span.directions {
