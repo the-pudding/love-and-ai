@@ -1,11 +1,9 @@
 <script>
   import { scaleDiverging } from "d3-scale";
+  import prefersReducedMotion from "../stores/prefersReducedMotion.js";
   import Outcome from "./Decision.Outcome.svelte";
   import Input from "./Decision.Input.svelte";
-  import inView from "../actions/inView.js";
-  import { bottomOffset } from "../stores/global.js";
   export let choices = [];
-  let visible;
 
   const positionText = (arr) => {
     const grafs = arr.map((d) => d.value.split("<br>"));
@@ -55,6 +53,8 @@
   let marginBottom = 0;
   let dur = "500ms";
 
+  $: prm = prefersReducedMotion;
+
   $: {
     const diff = Math.abs(active - prev);
     dur = `${500 * diff}ms`;
@@ -63,10 +63,7 @@
 </script>
 
 {#if choices.length}
-  <div class="decision" style="margin-bottom: {marginBottom}px;" class:visible>
-    <!-- use:inView="{{ bottom: $bottomOffset }}"
-    on:enter="{() => (visible = true)}"
-    on:exit="{() => (visible = false)}" -->
+  <div class="decision" class:prm style="margin-bottom: {marginBottom}px;">
     <p class="leadin block locked">{choices[0].leadin}</p>
     <Input data="{data}" bind:active dur="{dur}" />
     <Outcome
@@ -84,12 +81,12 @@
     margin-top: 4em;
     padding-bottom: 4em;
     position: relative;
-    transition: all 500ms ease-out;
-    opacity: 1;
+    transition: margin-bottom 500ms ease-in;
+    will-change: margin-bottom;
   }
 
-  .decision.visible {
-    opacity: 1;
+  .decision.prm {
+    transition: none;
   }
 
   .leadin {

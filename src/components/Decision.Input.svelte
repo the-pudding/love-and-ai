@@ -1,14 +1,18 @@
 <script>
   import css from "../actions/css.js";
+  import prefersReducedMotion from "../stores/prefersReducedMotion.js";
   export let data;
   export let active;
   export let dur;
   $: current = data[active];
   $: r = current.rotate;
+
+  $: prm = prefersReducedMotion;
 </script>
 
 <div
   class="decision-input"
+  class:prm
   style="transform: rotate({-r}deg);"
   use:css="{{ dur }}"
 >
@@ -36,6 +40,11 @@
     transform-origin: 50% 50%;
     position: relative;
     z-index: 1;
+    will-change: transform;
+  }
+
+  .decision-input.prm {
+    --dur: 0ms;
   }
 
   fieldset {

@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher, tick, onMount } from "svelte";
+  import prefersReducedMotion from "../stores/prefersReducedMotion.js";
   import Text from "./Outcome.Text.svelte";
   import css from "../actions/css.js";
   import Icon from "./helpers/Icon.svelte";
@@ -15,6 +16,7 @@
   let locked = 1;
   let el;
 
+  $: prm = prefersReducedMotion;
   $: current = data[active];
   $: r = current.rotate * -1;
   $: active, (marginBottom = margins[active]);
@@ -59,6 +61,7 @@
 <div
   bind:this="{el}"
   class="decision-outcome"
+  class:prm
   style="transform: rotate({r}deg);"
   on:transitionend|self="{onTransitionEnd}"
   use:css="{{ dur }}"
@@ -107,6 +110,11 @@
     width: var(--col-width);
     margin: 0 auto;
     z-index: 0;
+    will-change: transform;
+  }
+
+  .decision-outcome.prm {
+    --dur: 0ms;
   }
 
   .outcome {
@@ -117,6 +125,11 @@
     width: calc(var(--col-width));
     transition: opacity 500ms ease-out;
     opacity: 0.2;
+    will-change: opacity;
+  }
+
+  .prm .outcome {
+    transition: none;
   }
 
   .outcome.active {
@@ -132,7 +145,13 @@
     margin: 0 auto;
     opacity: 0;
     transition: opacity 500ms ease-out;
+    will-change: opacity;
     max-width: 20em;
+  }
+
+  .outcome.inactive.prm .stop,
+  .outcome.prm .stop {
+    transition: none;
   }
 
   .outcome.active .stop {

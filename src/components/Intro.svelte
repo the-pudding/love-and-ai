@@ -1,9 +1,16 @@
 <script>
+  import inView from "../actions/inView.js";
   import switcher from "../actions/switcher.js";
   export let copy;
+  let visible = true;
 </script>
 
-<section id="intro">
+<section
+  id="intro"
+  use:inView
+  on:enter="{() => (visible = true)}"
+  on:exit="{() => (visible = false)}"
+>
   <h1 class="hed" use:switcher>
     {#each copy.titles as title, i}
       <span role="button" class:switch="{i === 0}">{title}</span>
@@ -11,19 +18,27 @@
   </h1>
   <p class="subhed">{copy.description}</p>
   <div class="byline-corner">
-    <div class="byline-block">
+    <div class="byline-block visible">
       <p class="byline-category">Story</p>
-      <a href="https://pudding.cool/author/pamela-mishkin/" target=_blank><p>Pamela Miskin</p></a>
+      <a href="https://pudding.cool/author/pamela-mishkin/" target="_blank"
+        ><p>Pamela Miskin</p></a
+      >
       <p>with help from <span>GPT-3</span></p>
     </div>
-    <div class="byline-block">
+    <div class="byline-block" class:visible>
       <p class="byline-category">Design + Code</p>
-      <a href="https://pudding.cool/author/russell-goldenberg/" target=_blank><p>Russell Goldenberg</p></a>
-      <a href="https://pudding.cool/author/jan-diehm/" target=_blank><p>Jan Diehm</p></a>
+      <a href="https://pudding.cool/author/russell-goldenberg/" target="_blank"
+        ><p>Russell Goldenberg</p></a
+      >
+      <a href="https://pudding.cool/author/jan-diehm/" target="_blank"
+        ><p>Jan Diehm</p></a
+      >
     </div>
-    <div class="byline-block">
+    <div class="byline-block" class:visible>
       <p class="byline-category">Illustrations</p>
-      <a href="https://mariascherlies.com/" target=_blank><p>Maria Scherlies</p></a>
+      <a href="https://mariascherlies.com/" target="_blank"
+        ><p>Maria Scherlies</p></a
+      >
     </div>
   </div>
 </section>
@@ -45,6 +60,12 @@
 
   .byline-block {
     margin: 0 0 1rem 0;
+    transition: opacity 500ms ease-in-out;
+    opacity: 0;
+  }
+
+  .byline-block.visible {
+    opacity: 1;
   }
 
   .byline-block a:hover {
