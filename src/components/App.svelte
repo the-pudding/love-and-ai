@@ -43,7 +43,9 @@
   </section>
 {/each}
 
-<Methods copy="{copy}" />
+<section id="method">
+  <Methods copy="{copy}" />
+</section>
 
 <!-- for when we hit a stop so it doesn't jump -->
 <div style="padding-top:50vh" class="spacer"></div>
@@ -58,7 +60,7 @@
   }
 
   .animation {
-	  position: absolute;
+    position: absolute;
     width: 100%;
     height: 100vh;
   }

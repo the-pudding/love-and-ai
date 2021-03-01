@@ -34,6 +34,8 @@
     margin: 0 auto;
     transition: transform var(--dur) ease-in-out;
     transform-origin: 50% 50%;
+    position: relative;
+    z-index: 1;
   }
 
   fieldset {

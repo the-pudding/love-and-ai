@@ -2,26 +2,24 @@
   export let copy;
 </script>
 
-<section id="method">
+<div>
   <h3>Methodology</h3>
   {#each copy.method as { value }}
     <p>{@html value}</p>
   {/each}
-</section>
-
-<section id="note">
+</div>
+<div>
   <h3>Author’s Note</h3>
   {#each copy.notes as { value }}
     <p>{@html value}</p>
   {/each}
-</section>
+</div>
 
 <style>
-  #method,
-  #note {
+  div {
     max-width: 30em;
-    margin: 2rem auto 0 auto;
     padding: 0em 2em;
+    margin: 2em auto;
   }
 
   h3 {

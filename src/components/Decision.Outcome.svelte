@@ -106,7 +106,7 @@
     transform-origin: 50% calc(var(--wheel-width) / -2);
     width: var(--col-width);
     margin: 0 auto;
-    z-index: -1;
+    z-index: 0;
   }
 
   .outcome {
@@ -127,7 +127,8 @@
     opacity: 0;
   }
 
-  .outcome.inactive .stop, .outcome .stop {
+  .outcome.inactive .stop,
+  .outcome .stop {
     margin: 0 auto;
     opacity: 0;
     transition: opacity 500ms ease-out;
