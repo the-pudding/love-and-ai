@@ -39,8 +39,8 @@
     transition: transform var(--dur) ease-in-out;
     transform-origin: 50% 50%;
     position: relative;
-    z-index: 1;
     will-change: transform;
+    z-index: 1;
   }
 
   .decision-input.prm {
@@ -51,8 +51,11 @@
     height: 100%;
     position: relative;
     border-radius: 50%;
-    border-color: var(--fg);
-    background: rgba(251, 231, 201, 0.25);
+    border-color: transparent;
+    background: url("../assets/images/circle.png");
+    background-size: 95%;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .choice {

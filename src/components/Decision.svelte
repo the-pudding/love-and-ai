@@ -79,7 +79,7 @@
 <style>
   .decision {
     margin-top: 4em;
-    padding-bottom: 4em;
+    padding-bottom: 4rem;
     position: relative;
     transition: margin-bottom 500ms ease-in;
     will-change: margin-bottom;
@@ -96,12 +96,11 @@
     max-width: 10em;
     top: 50%;
     left: 50%;
-    margin: 0;
-    padding-top: 1em;
-    transform: translate(-50%, -100%);
+    margin: -2rem 0 0 0;
+    transform: translate(-50%, -50%);
     font-family: var(--sans);
     font-size: 1.5em;
     line-height: 1.2;
-    z-index: 1;
+    z-index: 2;
   }
 </style>

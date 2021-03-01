@@ -55,6 +55,7 @@
   section {
     display: none;
   }
+
   .unstopped {
     display: block;
   }

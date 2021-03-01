@@ -115,8 +115,11 @@
   }
 
   p.subhed {
-    font-size: 1.5em;
+    font-size: 1.25em;
     line-height: 1.2;
+    font-family: var(--sans);
+    max-width: 40rem;
+    margin: 0 auto;
   }
 
   .byline p {

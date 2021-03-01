@@ -60,7 +60,7 @@
 	--highlight: var(--yellow);
 
 	--col-width: 28em;
-	--wheel-width: 22em;
+	--wheel-width: 24em;
 }
 
 body {
@@ -175,7 +175,6 @@ span.directions {
 	font-size: 0.9rem;
 	color: var(--off-black);
 	padding: 0.125rem 0.35rem;
-	pointer-events: none;
 }
 
 .prose span.directions span.option {
@@ -251,7 +250,7 @@ h1 span {
 	pointer-events: none;
 }
 
-#section-9 .animation {
+#section-8 .animation {
 	position: relative;
 	height: auto;
 }
