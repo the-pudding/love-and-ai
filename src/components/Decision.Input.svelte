@@ -100,4 +100,19 @@
   input[type="radio"]:focus + label {
     box-shadow: 0 0 0 3px var(--light-blue);
   }
+
+  @media only screen and (max-width: 480px) {
+    .decision-input {
+      width: 20em;
+      height: 20em;
+    }
+
+    .choice {
+      width: 20em;
+    }
+
+    .rotate {
+      transform-origin: 50% calc(20em / -2);
+    }
+  }
 </style>

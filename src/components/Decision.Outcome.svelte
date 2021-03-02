@@ -122,7 +122,7 @@
     transform-origin: 50% calc(var(--wheel-width) / -2);
     top: 0;
     left: 0;
-    width: calc(var(--col-width));
+    max-width: calc(var(--col-width));
     transition: opacity 500ms ease-out;
     opacity: 0.2;
     will-change: opacity;
@@ -161,5 +161,11 @@
   .stop p {
     margin: 0;
     text-align: center;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .outcome {
+      padding: 0 1em;
+    }
   }
 </style>

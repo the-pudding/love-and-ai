@@ -100,18 +100,14 @@
     font-size: 4em;
     margin: 0.55em 0;
     user-select: none;
+    padding: 0 1rem;
   }
 
   h1 span {
-    border: 1px solid var(--fg);
-    box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
-    border-radius: 5px;
-    padding: 0.75rem 1.75rem 0.75rem 1rem;
-    font-family: var(--mono);
-  }
-
-  h1 span:hover {
-    background: rgba(251, 231, 201, 0.25);
+    border: none;
+    background: none;
+    box-shadow: none;
+    font-family: var(--headline);
   }
 
   p.subhed {
@@ -120,6 +116,7 @@
     font-family: var(--sans);
     max-width: 40rem;
     margin: 0 auto;
+    padding: 0 1rem;
   }
 
   .byline p {
@@ -132,5 +129,24 @@
     border-radius: 5px;
     padding: 0.25rem 0.5rem;
     font-family: var(--mono);
+  }
+
+  @media only screen and (max-width: 480px) {
+    h1 {
+      font-size: 2.5em;
+    }
+
+    p.subhed {
+      font-size: 1.125em;
+    }
+
+    .byline-corner {
+      position: relative;
+      padding: 2rem 1rem 0rem;
+    }
+
+    .byline-block p {
+      text-align: center;
+    }
   }
 </style>

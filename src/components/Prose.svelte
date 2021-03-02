@@ -15,5 +15,6 @@
     flex-direction: column;
     max-width: 60em;
     margin: 0 auto;
+    padding: 0 1rem;
   }
 </style>

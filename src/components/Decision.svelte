@@ -103,4 +103,10 @@
     line-height: 1.2;
     z-index: 2;
   }
+
+  @media only screen and (max-width: 480px) {
+    .leadin {
+      font-size: 1.25em;
+    }
+  }
 </style>

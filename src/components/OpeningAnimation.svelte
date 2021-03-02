@@ -61,4 +61,21 @@
       transform: translateX(1000%);
     }
   }
+
+  @media only screen and (max-width: 480px) {
+    .animation {
+      height: 300px;
+    }
+
+    .background, .foreground {
+      width: 400px;
+      height: 300px;
+    }
+
+    .middle {
+      width: 132px;
+      height: 149px;
+      top: 82px;
+    }
+  }
 </style>

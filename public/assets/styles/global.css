@@ -283,3 +283,38 @@ h1 span {
 	background: url("../images/210219_Train_Animation_Final.gif") 0 0;
 	background-size: cover;
 }
+
+@media only screen and (max-width: 480px) {
+	h1 span.switch::before {
+		width: 75px;
+		height: 75px;
+		transform: scale(0.5);
+		top: 2.25rem;
+		left: -0.25rem;
+	}
+
+	.animation {
+		position: relative;
+		height: 300px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.animation .left, .animation .right {
+		position: relative;
+		width: 180px;
+		height: 180px;
+		background-size: cover;
+	}
+
+	.animation .left {
+		left: 0;
+		bottom: 0;
+	}
+
+	.animation .right {
+		right: 0;
+		bottom: 0;
+	}
+}

@@ -13,7 +13,7 @@
 
 <style>
   p {
-    width: var(--col-width);
+    max-width: var(--col-width);
     transition: opacity 250ms ease-in;
     padding: 1.5em 1em;
     margin: 0 auto;
