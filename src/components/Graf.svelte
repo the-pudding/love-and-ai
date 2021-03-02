@@ -15,6 +15,7 @@
   p {
     width: var(--col-width);
     max-width: var(--col-width);
+    width: 100%;
     transition: opacity 250ms ease-in;
     padding: 1.5em 1em;
     margin: 0 auto;

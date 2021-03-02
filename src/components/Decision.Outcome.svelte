@@ -16,7 +16,7 @@
   let locked = 1;
   let el;
 
-  $: prm = prefersReducedMotion;
+  $: prm = $prefersReducedMotion;
   $: current = data[active];
   $: r = current.rotate * -1;
   $: active, (marginBottom = margins[active]);
@@ -82,6 +82,7 @@
           locked="{locked}"
           i="{i}"
           active="{active}"
+          dur="{dur}"
         />
       {/if}
       {#if stop === "yes"}

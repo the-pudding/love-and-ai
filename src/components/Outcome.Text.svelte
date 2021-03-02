@@ -5,11 +5,12 @@
   export let active;
   export let locked;
   export let i;
+  export let dur;
 </script>
 
 {#each text as { value }}
-  <p class="{type}" class:active="{active === i}">
-    <Graf type="{type}" locked="{locked}" value="{value}" i="{i}" />
+  <p class="{type}" class:active="{active === i}" class:prm="{dur === '0ms'}">
+    <Graf dur="{dur}" type="{type}" locked="{locked}" value="{value}" i="{i}" />
   </p>
 {/each}
 
@@ -28,6 +29,9 @@
   p.active {
     filter: blur(0);
   }
+  
+  p.prm {
+    transition: none;
 
   p.reality {
     align-items: flex-start;

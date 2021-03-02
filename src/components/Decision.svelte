@@ -53,11 +53,11 @@
   let marginBottom = 0;
   let dur = "500ms";
 
-  $: prm = prefersReducedMotion;
+  $: prm = $prefersReducedMotion;
 
   $: {
     const diff = Math.abs(active - prev);
-    dur = `${500 * diff}ms`;
+    dur = `${prm ? 0 : 500 * diff}ms`;
     prev = active;
   }
 </script>
