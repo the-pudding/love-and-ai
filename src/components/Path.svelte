@@ -3,6 +3,7 @@
   import makeLine from "../utils/makeLine.js";
   import scrollY from "../stores/scrollY.js";
   import viewport from "../stores/viewport.js";
+  import prefersReducedMotion from "../stores/prefersReducedMotion.js";
 
   export let selector;
 
@@ -97,14 +98,15 @@
     mounted = true;
   });
 
-  $: offsetH = Math.floor($viewport.height * 0.5);
+  $: offsetH = Math.floor($viewport.height * 0.67);
   $: pathLen = getLen($scrollY + offsetH);
   $: dashOffset = dashArray - pathLen;
   $: pathLen, (animate = true);
   $: dashArray, (animate = false);
+  $: prm = $prefersReducedMotion;
 </script>
 
-<div class="path-container" style="height: {documentH}px;">
+<div class="path-container" style="height: {documentH}px;" class:prm>
   <svg>
     <path class="bg" d="{pathD}"></path>
 
@@ -155,6 +157,10 @@
 
   path.fg.animate {
     transition: stroke-dashoffset 500ms ease-out;
+  }
+
+  .prm path.fg.animate {
+    transition: none;
   }
 
   .path-container {
