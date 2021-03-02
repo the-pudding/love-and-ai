@@ -43,20 +43,30 @@
   </section>
 {/each}
 
-<section id="method">
+<section id="method" class="unstopped">
   <Methods copy="{copy}" />
 </section>
 
-<!-- for when we hit a stop so it doesn't jump -->
-<div style="padding-top:50vh" class="spacer"></div>
+<section id="spacer" class="unstopped">
+  <Footer />
+</section>
 
-<!-- <Footer /> -->
 <style>
   section {
     display: none;
   }
 
   .unstopped {
+    display: block;
+  }
+
+  #spacer {
+    visibility: hidden;
+    display: block;
+  }
+
+  #spacer.unstopped {
+    visibility: visible;
     display: block;
   }
 
