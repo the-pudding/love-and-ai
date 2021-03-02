@@ -1,10 +1,12 @@
 <script>
   import inView from "../actions/inView.js";
+  import css from "../actions/css.js";
   import { bottomOffset } from "../stores/global.js";
   export let type;
   export let locked;
   export let i;
   export let value;
+  export let dur;
   const visible = [];
 </script>
 
@@ -21,6 +23,7 @@
 {:else}
   {#each value as { chunk, offset, id, side, count, index }, x}
     <span
+      use:css="{{ dur }}"
       class="block chunk {type}"
       class:locked="{locked === i}"
       class:flip="{chunk.includes('=flip')}"
@@ -31,16 +34,14 @@
       style="transform: translateX({offset}px);"
       class:visible="{visible[x]}">{@html chunk.replace(/\\/g, "")}</span
     >
-    <!-- use:inView="{{ bottom: $bottomOffset }}"
-      on:enter="{() => (visible[x] = true)}"
-      on:exit="{() => (visible[x] = false)}" -->
   {/each}
 {/if}
 
 <style>
   span {
+    --dur: 500ms;
     opacity: 1;
-    transition: all 500ms ease-in-out;
+    transition: all var(--dur) ease-in-out;
   }
 
   span.visible {
