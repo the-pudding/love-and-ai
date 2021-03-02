@@ -37,8 +37,8 @@
     {/if}
     <Prose grafs="{section.prose}" on:change="{onChange}" />
     <Decision choices="{section.decision}" on:change="{onChange}" />
-    {#if section.divider === "true"}
-      <hr />
+    {#if section.divider !== "false"}
+      <hr class="{section.divider}" />
     {/if}
   </section>
 {/each}
@@ -74,5 +74,9 @@
     position: absolute;
     width: 100%;
     height: 100vh;
+  }
+
+  hr.pad {
+    padding-top: 4em;
   }
 </style>

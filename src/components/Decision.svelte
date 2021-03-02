@@ -79,7 +79,7 @@
 <style>
   .decision {
     margin-top: 4em;
-    padding-bottom: 4rem;
+    padding-bottom: 4em;
     position: relative;
     transition: margin-bottom 500ms ease-in;
     will-change: margin-bottom;
