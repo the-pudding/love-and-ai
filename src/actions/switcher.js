@@ -1,6 +1,5 @@
 export default function switcher(node, params) {
-  let spans = node.querySelectorAll("span:not(.active):not(.option)");
-  console.log(spans.length)
+  let spans = node.querySelectorAll("span:not(.directions):not(.active):not(.option)");
   const last = spans.length - 1;
   spans.forEach((el, i) => {
     el.setAttribute("role", "button");
