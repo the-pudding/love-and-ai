@@ -11,11 +11,7 @@
   on:enter="{() => (visible = true)}"
   on:exit="{() => (visible = false)}"
 >
-  <h1 class="hed" use:switcher>
-    {#each copy.titles as title, i}
-      <span role="button" class:switch="{i === 0}">{title}</span>
-    {/each}
-  </h1>
+  <h1 class="hed">{copy.title}</h1>
   <p class="subhed">{copy.description}</p>
   <div class="byline-corner">
     <div class="byline-block visible">
@@ -99,8 +95,7 @@
     font-family: var(--headline);
     font-size: 4em;
     margin: 0.55em 0;
-    user-select: none;
-    padding: 0 1rem;
+    padding: 0 1em;
   }
 
   h1 span {
@@ -114,9 +109,9 @@
     font-size: 1.25em;
     line-height: 1.2;
     font-family: var(--sans);
-    max-width: 40rem;
+    max-width: 40em;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 1em;
   }
 
   .byline p {
@@ -127,26 +122,46 @@
     border: 1px solid var(--fg);
     box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
     border-radius: 5px;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25em 0.5em;
     font-family: var(--mono);
   }
 
-  @media only screen and (max-width: 480px) {
-    h1 {
-      font-size: 2.5em;
-    }
-
-    p.subhed {
-      font-size: 1.125em;
-    }
-
+  @media only screen and (max-width: 800px) {
     .byline-corner {
       position: relative;
-      padding: 2rem 1rem 0rem;
+      padding: 2em 1em 0em;
     }
 
     .byline-block p {
       text-align: center;
+    }
+  }
+
+  @media only screen and (max-width: 640px) {
+    h1 {
+      font-size: 4em;
+      margin: 0 auto;
+      line-height: 1.25;
+    }
+
+    p.subhed {
+      padding: 1em 1em 0 1em;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    section {
+      padding: 0 0 1em 0;
+    }
+
+    h1 {
+      font-size: 3em;
+      max-width: 7em;
+    }
+
+    p.subhed {
+      font-size: 1.125em;
+      padding: 1em 1em 0 1em;
     }
   }
 </style>

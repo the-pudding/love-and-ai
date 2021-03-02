@@ -165,8 +165,13 @@
   }
 
   @media only screen and (max-width: 480px) {
+    .decision-outcome {
+      width: 100%;
+    }
+    
     .outcome {
       padding: 0 1em;
+      width: 100%;
     }
   }
 </style>
