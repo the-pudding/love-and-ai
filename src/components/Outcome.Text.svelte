@@ -32,6 +32,7 @@
   
   p.prm {
     transition: none;
+  }
 
   p.reality {
     align-items: flex-start;
