@@ -49,7 +49,7 @@
     transform: translateX(-100%);
     width: 200px;
     height: 225px;
-    background-size: cover;
+    background-size: contain;
     animation: moveWalkingX 30s linear infinite;
   }
 
@@ -62,20 +62,41 @@
     }
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 640px) {
     .animation {
-      height: 300px;
+      height: 317px;
+      margin: 0 0 1rem 0;
     }
 
     .background, .foreground {
-      width: 400px;
-      height: 300px;
+      width: 480px;
+      height: 317px;
     }
 
     .middle {
-      width: 132px;
-      height: 149px;
+      width: 160px;
+      height: 180px;
+      top: 100px;
+      animation: moveWalkingX 20s linear infinite;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .animation {
+      height: 240px;
+      margin: 0 0 1rem 0;
+    }
+
+    .background, .foreground {
+      width: 360px;
+      height: 240px;
+    }
+
+    .middle {
+      width: 120px;
+      height: 135px;
       top: 82px;
+      animation: moveWalkingX 20s linear infinite;
     }
   }
 </style>

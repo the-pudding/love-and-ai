@@ -109,6 +109,7 @@
 
     .choice {
       width: 20em;
+      transform: translate(0, 20em);
     }
 
     .rotate {

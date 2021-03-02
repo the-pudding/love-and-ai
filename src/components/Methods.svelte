@@ -35,4 +35,18 @@
     font-size: 0.9em;
     margin: 0 0 1em 0;
   }
+
+  a:hover {
+    color: var(--orange-path);
+  }
+
+  @media only screen and (max-width: 480px) {
+    div {
+      padding: 0em 2em;
+    }
+
+    p {
+      font-size: 0.8em;
+    }
+  }
 </style>

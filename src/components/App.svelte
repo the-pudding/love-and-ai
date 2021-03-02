@@ -79,4 +79,14 @@
   hr.pad {
     padding-top: 4em;
   }
+
+
+
+  @media only screen and (max-width: 1000px) {
+    .animation {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+  }
 </style>

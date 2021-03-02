@@ -27,7 +27,7 @@
 	--tan-black: #7A4700;
 	--path-green: #5AA471;
 	--path-orange: #e76e1f;
-	--light-blue: #DBE5E3;
+	--light-blue: #CEE0DC;
 
 	--love-peach-light: #FAE8DD;
 
@@ -284,28 +284,23 @@ h1 span {
 	background-size: cover;
 }
 
-@media only screen and (max-width: 480px) {
-	h1 span.switch::before {
-		width: 75px;
-		height: 75px;
-		transform: scale(0.5);
-		top: 2.25rem;
-		left: -0.25rem;
-	}
-
+@media only screen and (max-width: 1000px) {
 	.animation {
 		position: relative;
 		height: 300px;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		margin: 0 0 2rem 0;
 	}
 
 	.animation .left, .animation .right {
 		position: relative;
-		width: 180px;
-		height: 180px;
-		background-size: cover;
+		width: 50%;
+		height: 300px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 
 	.animation .left {
@@ -316,5 +311,26 @@ h1 span {
 	.animation .right {
 		right: 0;
 		bottom: 0;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.animation .train {
+		width: 480px;
+		height: 360px;
+		margin: 1rem auto;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.animation .left, .animation .right {
+		height: 240px;
+	}
+
+	.animation .train {
+		width: 360px;
+		height: 270px;
 	}
 }
