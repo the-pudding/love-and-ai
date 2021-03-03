@@ -93,7 +93,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    max-width: 10em;
+    max-width: 14rem;
     top: 50%;
     left: 50%;
     margin: -2rem 0 0 0;

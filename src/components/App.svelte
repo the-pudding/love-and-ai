@@ -19,7 +19,7 @@
 
   onMount(() => {
     mounted = true;
-    setTimeout(path.render, 30);
+    setTimeout(onChange, 500);
   });
 </script>
 
@@ -79,8 +79,6 @@
   hr.pad {
     padding-top: 4em;
   }
-
-
 
   @media only screen and (max-width: 1000px) {
     .animation {

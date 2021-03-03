@@ -21,7 +21,7 @@
   let scrollMap = {};
   let animate;
 
-  export const render = (change) => {
+  export const render = () => {
     setTimeout(renderPath, 30);
   };
 
@@ -104,7 +104,7 @@
   $: pathLen, (animate = true);
   $: dashArray, (animate = false);
   $: prm = $prefersReducedMotion;
-  $: if (mounted && $viewport.width) renderPath();
+  // $: if (mounted && $viewport.width) renderPath();
 </script>
 
 <div class="path-container" style="height: {documentH}px;" class:prm>
