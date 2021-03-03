@@ -111,24 +111,6 @@
     box-shadow: 0 0 0 3px var(--light-blue);
   }
 
-  @keyframes wiggle {
-    10%, 90% {
-      transform: translateX(-1px) rotate(var(--r));
-    }
-    
-    20%, 80% {
-      transform: translateX(-1px) rotate(var(--r));
-    }
-
-    30%, 50%, 70% {
-      transform: translateX(-2px) rotate(var(--r));
-    }
-
-    40%, 60% {
-      transform: translateX(2px) rotate(var(--r));
-    }
-  }
-
   @media only screen and (max-width: 480px) {
     .decision-input {
       width: var(--wheel-width-mobile);
