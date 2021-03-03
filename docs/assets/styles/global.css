@@ -285,6 +285,10 @@ h1 span {
 	background-size: cover;
 }
 
+#method p a:hover {
+	color: var(--path-orange);
+}
+
 @media only screen and (max-width: 1000px) {
 	.animation {
 		position: relative;
