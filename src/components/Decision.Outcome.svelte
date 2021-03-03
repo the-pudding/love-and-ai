@@ -123,7 +123,8 @@
     transform-origin: 50% calc(var(--wheel-width) / -2);
     top: 0;
     left: 0;
-    max-width: calc(var(--col-width));
+    width: 100%;
+    max-width: var(--col-width);
     transition: opacity 500ms ease-out;
     opacity: 0.2;
     will-change: opacity;
@@ -167,11 +168,13 @@
   @media only screen and (max-width: 480px) {
     .decision-outcome {
       width: 100%;
+      transform-origin: 50% calc(var(--wheel-width-mobile) / -2);
     }
-    
+
     .outcome {
       padding: 0 1em;
       width: 100%;
+      transform-origin: 50% calc(var(--wheel-width-mobile) / -2);
     }
   }
 </style>

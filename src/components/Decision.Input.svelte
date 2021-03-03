@@ -31,6 +31,11 @@
 </div>
 
 <style>
+  fieldset {
+    padding: 0;
+    margin: 0;
+  }
+
   .decision-input {
     --dur: 500ms;
     width: var(--wheel-width);
@@ -103,17 +108,17 @@
 
   @media only screen and (max-width: 480px) {
     .decision-input {
-      width: 20em;
-      height: 20em;
+      width: var(--wheel-width-mobile);
+      height: var(--wheel-width-mobile);
     }
 
     .choice {
-      width: 20em;
-      transform: translate(0, 20em);
+      width: var(--wheel-width-mobile);
+      transform: translate(0, var(--wheel-width-mobile));
     }
 
     .rotate {
-      transform-origin: 50% calc(20em / -2);
+      transform-origin: 50% calc(var(--wheel-width-mobile) / -2);
     }
   }
 </style>

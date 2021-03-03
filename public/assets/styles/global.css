@@ -61,6 +61,7 @@
 
 	--col-width: 28em;
 	--wheel-width: 24em;
+	--wheel-width-mobile: 20em;
 }
 
 body {
