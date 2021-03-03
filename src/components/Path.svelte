@@ -104,6 +104,7 @@
   $: pathLen, (animate = true);
   $: dashArray, (animate = false);
   $: prm = $prefersReducedMotion;
+  $: if (mounted && $viewport.width) renderPath();
 </script>
 
 <div class="path-container" style="height: {documentH}px;" class:prm>

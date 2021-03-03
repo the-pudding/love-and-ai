@@ -58,10 +58,12 @@
     margin: 0 0 1rem 0;
     transition: opacity 500ms ease-in-out;
     opacity: 0;
+    pointer-events: none;
   }
 
   .byline-block.visible {
     opacity: 1;
+    pointer-events: auto;
   }
 
   .byline-block a:hover {
