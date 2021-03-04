@@ -2,12 +2,16 @@
   import inView from "../actions/inView.js";
   import css from "../actions/css.js";
   import { bottomOffset } from "../stores/global.js";
+  import viewport from "../stores/viewport.js";
   export let type;
   export let locked;
   export let i;
   export let value;
   export let dur;
   const visible = [];
+
+  $: mobile = $viewport.width < 480;
+  $: factor = mobile ? 4 : 1;
 </script>
 
 {#if typeof value === "string"}
@@ -31,7 +35,7 @@
       data-side="{side}"
       data-count="{count}"
       data-index="{index}"
-      style="transform: translateX({offset}px);"
+      style="transform: translateX({Math.round(offset / factor)}px);"
       class:visible="{visible[x]}">{@html chunk.replace(/\\/g, "")}</span
     >
   {/each}

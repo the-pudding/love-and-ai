@@ -70,7 +70,7 @@
         if (e[side][0] === d[side]) e.maxed = true;
         if (index > 0) {
           x = e.maxed ? e[side][0] : e[side][1];
-          x += side === "left" ? -OFFSET : OFFSET;
+          x += side === "left" ? -OFFSET / factor : OFFSET / factor;
         }
       }
       // if (index === count - 1) y += OFFSET;
@@ -103,6 +103,8 @@
   $: pathLen, (animate = true);
   $: dashArray, (animate = false);
   $: prm = $prefersReducedMotion;
+  $: mobile = $viewport.width < 480;
+  $: factor = mobile ? 4 : 1;
   // $: if (mounted && $viewport.width) renderPath();
 </script>
 
