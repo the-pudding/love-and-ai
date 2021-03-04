@@ -90,8 +90,7 @@
     if (!match) return 0;
     const i = Math.floor(match / step);
     const len = scrollMap[i];
-    // console.log({ y, match, i, len });
-    return len || 0;
+    return typeof len === "undefined" ? scrollMap[0] : len;
   };
 
   onMount(() => {
@@ -118,8 +117,8 @@
       d="{pathD}"
       stroke-dasharray="{dashArray}"
       stroke-dashoffset="{dashOffset}"></path>
-
-    <!-- <g>
+    <!-- 
+    <g>
       {#each points as { x, y }}
         <circle cx="{x}" cy="{y}" r="5"></circle>
       {/each}
@@ -165,6 +164,5 @@
     left: 0;
     width: 100%;
     z-index: var(--z-bottom);
-    /* background: rgba(255, 0, 0, 0.1); */
   }
 </style>
