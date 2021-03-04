@@ -7,12 +7,12 @@ export default readable(false, (set) => {
 	const onChange = () => set(!mediaQueryList.matches);
 	
 	if (typeof window !== "undefined") {
-		mediaQueryList.addEventListener("change", onChange);
+		mediaQueryList.addListener(onChange);
 		onChange();
 	}
 	
 	return () => {
-		if (typeof window !== "undefined") mediaQueryList.removeEventListener('change', onChange);
+		if (typeof window !== "undefined") mediaQueryList.removeListener(onChange);
 	}
 });
 
