@@ -119,11 +119,11 @@
       stroke-dasharray="{dashArray}"
       stroke-dashoffset="{dashOffset}"></path>
 
-    <g>
+    <!-- <g>
       {#each points as { x, y }}
         <circle cx="{x}" cy="{y}" r="5"></circle>
       {/each}
-    </g>
+    </g> -->
   </svg>
 </div>
 
@@ -134,16 +134,10 @@
     height: 100%;
   }
 
-  circle {
-    fill: gray;
-    display: none;
-  }
-
   path {
     fill: none;
     stroke: var(--fg);
     stroke-linecap: round;
-    /* will-change: ; */
   }
 
   path.bg {
@@ -154,6 +148,7 @@
   path.fg {
     stroke-width: 3px;
     stroke: var(--light-blue);
+    will-change: stroke-dashoffset;
   }
 
   path.fg.animate {

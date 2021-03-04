@@ -42,14 +42,18 @@
     --dur: 500ms;
     opacity: 1;
     transition: all var(--dur) ease-in-out;
+    display: block;
   }
 
   span.visible {
     opacity: 1;
   }
 
+  span.reality {
+    width: 100%;
+  }
+
   span.generation {
-    display: inline-block;
     background: var(--tan);
     border: 1px solid var(--off-black);
     box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.1);
