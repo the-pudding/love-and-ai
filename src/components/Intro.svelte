@@ -17,7 +17,7 @@
     <div class="byline-block visible">
       <p class="byline-category">Story</p>
       <a href="https://pudding.cool/author/pamela-mishkin/" target="_blank"
-        ><p>Pamela Miskin</p></a
+        ><p>Pamela Mishkin</p></a
       >
       <p>with help from <span>GPT-3</span></p>
     </div>
