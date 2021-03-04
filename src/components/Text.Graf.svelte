@@ -61,4 +61,10 @@
     padding: 0.5em 1em;
     font-family: var(--mono);
   }
+
+  @media only screen and (max-width: 480px) {
+    span.generation {
+      line-height: 1.2;
+    }
+  }
 </style>

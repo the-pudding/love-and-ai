@@ -1,6 +1,7 @@
 <script>
   import css from "../actions/css.js";
   import prefersReducedMotion from "../stores/prefersReducedMotion.js";
+  import viewport from "../stores/viewport.js";
   export let data;
   export let active;
   export let dur;
@@ -8,6 +9,14 @@
   $: r = current.rotate;
 
   $: prm = prefersReducedMotion;
+  $: mobile = $viewport.width < 480;
+
+  const translate = (r) => {
+    let x = 0;
+    if (r > 0) x = "-50%";
+    else if (r < 0) x = "50%";
+    return `translateX(${x})`;
+  };
 </script>
 
 <div
@@ -21,8 +30,11 @@
       <div class="choice">
         <div class="rotate" style="transform: rotate({rotate}deg);">
           <input id="{slug}" type="radio" value="{i}" bind:group="{active}" />
-          <label for="{slug}" style="transform: rotate({-rotate + r}deg);"
-            >{title}</label
+          <label
+            for="{slug}"
+            style="transform: rotate({-rotate + r}deg) {mobile
+              ? translate(-rotate + r)
+              : ''}">{title}</label
           >
         </div>
       </div>
@@ -92,7 +104,6 @@
     box-shadow: 0 0 0 3px var(--light-blue);
   }
 
-
   input {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
@@ -124,6 +135,12 @@
 
     .rotate {
       transform-origin: 50% calc(var(--wheel-width-mobile) / -2);
+    }
+
+    label {
+      max-width: 11em;
+      font-size: 0.75em;
+      line-height: 1.2;
     }
   }
 </style>
