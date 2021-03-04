@@ -1,6 +1,7 @@
 <script>
   import { createEventDispatcher, tick, onMount } from "svelte";
   import prefersReducedMotion from "../stores/prefersReducedMotion.js";
+  import { animations } from "../stores/global.js";
   import Text from "./Outcome.Text.svelte";
   import css from "../actions/css.js";
   import Icon from "./helpers/Icon.svelte";
@@ -16,7 +17,7 @@
   let locked = 1;
   let el;
 
-  $: prm = $prefersReducedMotion;
+  $: prm = $prefersReducedMotion || !$animations;
   $: current = data[active];
   $: r = current.rotate * -1;
   $: active, (marginBottom = margins[active]);

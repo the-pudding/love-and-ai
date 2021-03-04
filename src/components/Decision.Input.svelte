@@ -1,6 +1,7 @@
 <script>
   import css from "../actions/css.js";
   import prefersReducedMotion from "../stores/prefersReducedMotion.js";
+  import { animations } from "../stores/global.js";
   import viewport from "../stores/viewport.js";
   export let data;
   export let active;
@@ -8,7 +9,7 @@
   $: current = data[active];
   $: r = current.rotate;
 
-  $: prm = prefersReducedMotion;
+  $: prm = prefersReducedMotion || !$animations;
   $: mobile = $viewport.width < 480;
 
   const translate = (r) => {

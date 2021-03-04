@@ -1,6 +1,7 @@
 <script>
   import { scaleDiverging } from "d3-scale";
   import prefersReducedMotion from "../stores/prefersReducedMotion.js";
+  import { animations } from "../stores/global.js";
   import Outcome from "./Decision.Outcome.svelte";
   import Input from "./Decision.Input.svelte";
   export let choices = [];
@@ -53,7 +54,7 @@
   let marginBottom = 0;
   let dur = "500ms";
 
-  $: prm = $prefersReducedMotion;
+  $: prm = $prefersReducedMotion || !$animations;
 
   $: {
     const diff = Math.abs(active - prev);

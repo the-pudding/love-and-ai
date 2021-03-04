@@ -1,8 +1,12 @@
 <script>
   import inView from "../actions/inView.js";
   import switcher from "../actions/switcher.js";
+  import Switch from "./helpers/Switch.svelte";
+  import { animations } from "../stores/global.js";
   export let copy;
   let visible = true;
+  let hasAnimations = "on";
+  $: $animations = hasAnimations === "on";
 </script>
 
 <section
@@ -37,6 +41,11 @@
       >
     </div>
   </div>
+  <div class="byline-corner2">
+    <div class="byline-block visible">
+      <Switch label="Animations" bind:value="{hasAnimations}" />
+    </div>
+  </div>
 </section>
 
 <style>
@@ -44,6 +53,15 @@
     position: fixed;
     top: 0;
     left: 0;
+    padding: 1rem 0 0 1rem;
+    text-align: left;
+    color: var(--off-black);
+  }
+
+  .byline-corner2 {
+    position: fixed;
+    top: 0;
+    right: 1em;
     padding: 1rem 0 0 1rem;
     text-align: left;
     color: var(--off-black);
@@ -57,8 +75,8 @@
   .byline-block {
     margin: 0 0 1rem 0;
     transition: opacity 500ms ease-in-out;
-    opacity: 0;
     pointer-events: none;
+    opacity: 0;
   }
 
   .byline-block.visible {
@@ -134,7 +152,15 @@
       padding: 2em 1em 0em;
     }
 
-    .byline-block p {
+    .byline-corner2 {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      padding-left: 2em;
+      width: 100%;
+    }
+
+    .byline-block {
       text-align: center;
     }
   }

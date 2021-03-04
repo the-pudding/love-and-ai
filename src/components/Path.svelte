@@ -4,6 +4,7 @@
   import scrollY from "../stores/scrollY.js";
   import viewport from "../stores/viewport.js";
   import prefersReducedMotion from "../stores/prefersReducedMotion.js";
+  import { animations } from "../stores/global.js";
 
   export let selector;
 
@@ -102,7 +103,7 @@
   $: dashOffset = dashArray - pathLen;
   $: pathLen, (animate = true);
   $: dashArray, (animate = false);
-  $: prm = $prefersReducedMotion;
+  $: prm = $prefersReducedMotion || !$animations;
   $: mobile = $viewport.width < 480;
   $: factor = mobile ? 4 : 1;
   // $: if (mounted && $viewport.width) renderPath();
