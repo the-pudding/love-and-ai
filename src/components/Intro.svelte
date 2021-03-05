@@ -43,7 +43,7 @@
   </div>
   <div class="byline-corner2">
     <div class="byline-block visible">
-      <Switch label="Animations" bind:value="{hasAnimations}" />
+      <Switch label="Motion" bind:value="{hasAnimations}" />
     </div>
   </div>
 </section>
@@ -106,16 +106,17 @@
 
   section {
     margin: 0 auto;
-    max-width: 60em;
+    max-width: 40em;
     text-align: center;
     padding: 0 0 2em 0;
   }
 
   h1 {
     font-family: var(--headline);
-    font-size: 4em;
+    font-size: 4.5em;
     margin: 0.55em 0;
     padding: 0 1em;
+    line-height: 1.25;
   }
 
   h1 span {
@@ -129,7 +130,7 @@
     font-size: 1.25em;
     line-height: 1.2;
     font-family: var(--sans);
-    max-width: 40em;
+    max-width: 30em;
     margin: 0 auto;
     padding: 0 1em;
   }
@@ -147,6 +148,9 @@
   }
 
   @media only screen and (max-width: 800px) {
+    h1 {
+      font-size: 3.75em;
+    }
     .byline-corner {
       position: relative;
       padding: 2em 1em 0em;
@@ -167,7 +171,7 @@
 
   @media only screen and (max-width: 640px) {
     h1 {
-      font-size: 4em;
+      font-size: 2.75em;
       margin: 0 auto;
       line-height: 1.25;
     }
@@ -183,8 +187,7 @@
     }
 
     h1 {
-      font-size: 3em;
-      max-width: 7em;
+      font-size: 2.25em;
     }
 
     p.subhed {

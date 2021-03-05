@@ -138,8 +138,8 @@ button:focus,
 input:focus,
 select:focus,
 textarea:focus {
-  box-shadow: 0 0 0 2px rgba(0, 150, 191, 0.67);
-  box-shadow: 0 0 0 2px var(--focus);
+  box-shadow: 0 0 0 2px var(--light-blue);
+  box-shadow: 0 0 0 2px var(--light-blue);
 }
 button:disabled,
 input:disabled,
