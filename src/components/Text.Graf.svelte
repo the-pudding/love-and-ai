@@ -69,6 +69,7 @@
   @media only screen and (max-width: 480px) {
     span.generation {
       line-height: 1.2;
+      font-size: 0.9em;
     }
   }
 </style>
