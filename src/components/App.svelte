@@ -63,11 +63,13 @@
   #spacer {
     visibility: hidden;
     display: block;
+    height: 50vh;
   }
 
   #spacer.unstopped {
     visibility: visible;
     display: block;
+    height: auto;
   }
 
   .animation {
