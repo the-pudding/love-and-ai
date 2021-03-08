@@ -70,5 +70,8 @@
     span.generation {
       line-height: 1.2;
     }
+    p {
+      font-size: 0.9em;
+    }
   }
 </style>
