@@ -29,18 +29,12 @@
   p.active {
     filter: blur(0);
   }
-  
+
   p.prm {
     transition: none;
   }
 
   p.reality {
     align-items: flex-start;
-  }
-
-  @media only screen and (max-width: 480px) {
-    p, p.reality {
-      font-size: 0.9em;
-    }
   }
 </style>
