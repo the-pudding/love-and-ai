@@ -181,5 +181,9 @@
       width: 100%;
       transform-origin: 50% calc(var(--wheel-width-mobile) / -2);
     }
+
+    .stop p {
+      font-size: 0.9em;
+    }
   }
 </style>

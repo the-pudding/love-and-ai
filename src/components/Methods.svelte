@@ -3,6 +3,7 @@
 </script>
 
 <div>
+  <hr />
   <h3>Methodology</h3>
   {#each copy.method as { value }}
     <p>{@html value}</p>

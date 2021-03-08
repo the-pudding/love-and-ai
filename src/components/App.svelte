@@ -32,14 +32,14 @@
 
 {#each copy.story as section, i}
   <section id="section-{i}" class="unstopped">
+    {#if section.divider !== "false"}
+      <hr class="{section.divider}" />
+    {/if}
     {#if section.animation}
       <div class="animation">{@html section.animation}</div>
     {/if}
     <Prose grafs="{section.prose}" on:change="{onChange}" />
     <Decision choices="{section.decision}" on:change="{onChange}" />
-    {#if section.divider !== "false"}
-      <hr class="{section.divider}" />
-    {/if}
   </section>
 {/each}
 
