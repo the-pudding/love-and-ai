@@ -23,8 +23,12 @@
   $: active, (marginBottom = margins[active]);
   $: hasStop = current.stop === "yes";
 
-  const margin = (node, { type }) => {
-    margins.push(node.offsetHeight);
+  const margin = (node, { type, i }) => {
+    const u = () => (margins[i] = node.offsetHeight);
+    u();
+    setTimeout(u, 500);
+    setTimeout(u, 1500);
+    setTimeout(u, 3000);
   };
 
   const toggleBelow = () => {
@@ -73,7 +77,7 @@
       class:active="{active === i}"
       class:inactive="{Math.abs(active - i) === 2}"
       style="transform: rotate({rotate}deg) translateY(4.5em);"
-      use:margin="{{ type }}"
+      use:margin="{{ type, i }}"
     >
       {#if text}
         <Text
