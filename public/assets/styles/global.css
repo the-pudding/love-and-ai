@@ -262,7 +262,7 @@ h1 span {
 	height: 300px;
 	position: absolute;
 	bottom: 20%;
-	left: 1em;
+	left: 0.5em;
 	background: url("../images/210219_Talking_Man_Animation_Final.gif") 0 0;
 	background-size: cover;
 }
@@ -272,7 +272,7 @@ h1 span {
 	height: 300px;
 	position: absolute;
 	bottom: 30%;
-	right: 1em;
+	right: 0.5em;
 	background: url("../images/210219_Talking_Woman_Animation_Final.gif") 0 0;
 	background-size: cover;
 }
