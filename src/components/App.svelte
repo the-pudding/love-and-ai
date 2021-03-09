@@ -60,6 +60,10 @@
     display: block;
   }
 
+  #method {
+    margin-bottom: 6em;
+  }
+
   #spacer {
     visibility: hidden;
     display: block;
