@@ -27,8 +27,8 @@
     </div>
     <div class="byline-block" class:visible>
       <p class="byline-category">Design + Code</p>
-      <a href="https://pudding.cool/author/russell-goldenberg/" target="_blank"
-        ><p>Russell Goldenberg</p></a
+      <a href="https://pudding.cool/author/russell-samora/" target="_blank"
+        ><p>Russell Samora</p></a
       >
       <a href="https://pudding.cool/author/jan-diehm/" target="_blank"
         ><p>Jan Diehm</p></a
